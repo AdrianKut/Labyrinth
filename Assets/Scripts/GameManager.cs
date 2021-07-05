@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI textPoints;
 
     public bool isGameOver;
+
+    public bool isPause;
+    public GameObject pauseUI;
     public void PickItem(ItemToPick item)
     {
         switch (item)
@@ -62,12 +65,37 @@ public class GameManager : MonoBehaviour
             MainManager.instance.Save();
 
             //Jakieœ ui gratulacje pomyœlnego przejscia poziomu itp
-            SceneManager.LoadScene(0);
+            BackToMenu();
+            //REKLAMA
         }
         else
         {
             print("Message you dont have enough points to finish level!");
         }
+    }
+
+    public void Pause()
+    {
+        if (isPause)
+        {
+            pauseUI.SetActive(false);
+            isPause = false;
+            Time.timeScale = 1;
+        }
+        else
+        {
+            pauseUI.SetActive(true);
+            isPause = true;
+            Time.timeScale = 0;
+        }
+        
+    }
+
+    public void BackToMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
+        //REKLAMA
     }
 
     public void GameOver()
