@@ -34,15 +34,12 @@ public class GameManager : MonoBehaviour
                 textPoints.text = "" + goldToCollect;
                 break;
             case ItemToPick.Key:
-
                 break;
         }
     }
 
     void Start()
     {
-
-
         Application.targetFrameRate = 999;
         player.transform.position = startPosition.position;
 
@@ -61,21 +58,8 @@ public class GameManager : MonoBehaviour
     {
         if (goldToCollect == 0)
         {
-            var spliter = SceneManager.GetActiveScene().name.Split('_');
-            int currentLevel = int.Parse(spliter[1]);
-
-            //Dictionary<int, bool> tempLevelNumbersIsComplete = MainManager.levelNumberIsComplete;
-            //tempLevelNumbersIsComplete.Add(currentLevel + 1, true);
-            //MainManager.levelNumberIsComplete = tempLevelNumbersIsComplete;
-
-            //MainManager.levelNumberIsComplete.Add(currentLevel + 1, true);
-            MainManager.instance.levelNumberIsComplete[currentLevel + 1] = true;
-            foreach (var item in MainManager.instance.levelNumberIsComplete)
-            {
-                Debug.Log(item.Key + ": " + item.Value);
-            }
+            MainManager.instance.currentLevelCompleted += 1;
             MainManager.instance.Save();
-
 
             //Jakieœ ui gratulacje pomyœlnego przejscia poziomu itp
             SceneManager.LoadScene(0);

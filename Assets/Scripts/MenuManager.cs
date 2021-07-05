@@ -1,9 +1,7 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
-
     [SerializeField] GameObject startGameView;
     [SerializeField] GameObject mainMenuView;
 
@@ -14,7 +12,6 @@ public class MenuManager : MonoBehaviour
     {
         startGameView.SetActive(true);
         mainMenuView.SetActive(false);
-
     }
 
     public void LoadMainMenuView()

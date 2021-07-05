@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -14,20 +13,9 @@ public class LevelManager : MonoBehaviour
 
     private void LoadButtonsLevel()
     {
-        foreach (var level in levels)
+        for (int i = 0; i < MainManager.instance.currentLevelCompleted + 1; i++)
         {
-            level.GetComponent<Button>().interactable = false;
-        }
-
-       // First level is always available
-        //levels[0].GetComponent<Button>().interactable = true;
-        byte i = 0;
-        foreach (KeyValuePair<int, bool> item in MainManager.instance.levelNumberIsComplete)
-        {
-            if (item.Value == true)
-                levels[i].GetComponent<Button>().interactable = true;
-
-            i++;
+            levels[i].GetComponent<Button>().interactable = true;
         }
     }
 
