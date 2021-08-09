@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -41,6 +42,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public GameObject collectGoldInformationGameObject;
+    public GameObject levelCompleteGameObject;
+
     void Start()
     {
         Application.targetFrameRate = 999;
@@ -70,16 +74,25 @@ public class GameManager : MonoBehaviour
                 MainManager.instance.Save();
             }
 
-
-
             //Jakieœ ui gratulacje pomyœlnego przejscia poziomu itp
+            StartCoroutine(ShowInformation());
+
             BackToMenu();
             //REKLAMA
         }
         else
         {
+            StartCoroutine(ShowInformation());          
             print("Message you dont have enough points to finish level!");
         }
+    }
+
+    IEnumerator ShowInformation()
+    {   //complete/collect
+
+        collectGoldInformationGameObject.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        collectGoldInformationGameObject.SetActive(false);
     }
 
     public void Pause()
