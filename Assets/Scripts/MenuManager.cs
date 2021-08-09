@@ -16,7 +16,6 @@ public class MenuManager : MonoBehaviour
     {
         startGameView.SetActive(false);
         mainMenuView.SetActive(true);
-
     }
 
     public void Exit()

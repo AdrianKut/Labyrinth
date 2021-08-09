@@ -9,6 +9,12 @@ public enum ItemToPick
     Key
 }
 
+public enum Obstacle
+{
+    Hole,
+
+}
+
 public abstract class GameManagerInitialazor : MonoBehaviour
 {
     protected GameManager gameManager;
@@ -29,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     public bool isPause = false;
     public GameObject pauseUI;
+
     public void PickItem(ItemToPick item)
     {
         switch (item)
@@ -41,6 +48,21 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
+
+    public void HitObstacles(Obstacle obstacle)
+    {
+        switch (obstacle)
+        {
+            case Obstacle.Hole:
+                player.transform.position = startPosition.position;
+                Debug.Log("Game Over");
+                break;
+         
+                
+        }
+    }
+
+
 
     public GameObject collectGoldInformationGameObject;
     public GameObject levelCompleteGameObject;
@@ -74,25 +96,35 @@ public class GameManager : MonoBehaviour
                 MainManager.instance.Save();
             }
 
-            //Jakieœ ui gratulacje pomyœlnego przejscia poziomu itp
-            StartCoroutine(ShowInformation());
-
-            BackToMenu();
-            //REKLAMA
+            StartCoroutine(ShowInformation("complete"));
         }
         else
         {
-            StartCoroutine(ShowInformation());          
-            print("Message you dont have enough points to finish level!");
+            StartCoroutine(ShowInformation("collectGold"));
         }
     }
 
-    IEnumerator ShowInformation()
-    {   //complete/collect
+    IEnumerator ShowInformation(string message)
+    {
+        switch (message)
+        {
+            case "complete":
+                player.SetActive(false);
+                levelCompleteGameObject.SetActive(true);
+                yield return new WaitForSeconds(2.75f);
+                levelCompleteGameObject.SetActive(true);
 
-        collectGoldInformationGameObject.SetActive(true);
-        yield return new WaitForSeconds(2f);
-        collectGoldInformationGameObject.SetActive(false);
+                //DODAÆ REKLAME :)
+                BackToMenu();
+                break;
+
+            case "collectGold":
+                collectGoldInformationGameObject.SetActive(true);
+                yield return new WaitForSeconds(2f);
+                collectGoldInformationGameObject.SetActive(false);
+                break;
+
+        }
     }
 
     public void Pause()
@@ -109,7 +141,7 @@ public class GameManager : MonoBehaviour
             player.SetActive(false);
             pauseUI.SetActive(true);
             isPause = true;
-            Time.timeScale = 0;  
+            Time.timeScale = 0;
         }
 
     }
