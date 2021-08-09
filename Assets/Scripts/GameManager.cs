@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     public bool isGameOver;
 
-    public bool isPause;
+    public bool isPause = false;
     public GameObject pauseUI;
     public void PickItem(ItemToPick item)
     {
@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 999;
         player.transform.position = startPosition.position;
 
-        Instantiate(player, startPosition.position, Quaternion.identity);
+        player = Instantiate(player, startPosition.position, Quaternion.identity);
 
         goldToCollect = GameObject.FindGameObjectsWithTag("Gold").Length;
         textPoints.text = "" + goldToCollect;
@@ -61,8 +61,16 @@ public class GameManager : MonoBehaviour
     {
         if (goldToCollect == 0)
         {
-            MainManager.instance.currentLevelCompleted += 1;
-            MainManager.instance.Save();
+            string[] spliter = SceneManager.GetActiveScene().name.Split('_');
+            int currentLevel = int.Parse(spliter[1]);
+
+            if (currentLevel > MainManager.instance.currentLevelCompleted && currentLevel != 10)
+            {
+                MainManager.instance.currentLevelCompleted = (currentLevel);
+                MainManager.instance.Save();
+            }
+
+
 
             //Jakieœ ui gratulacje pomyœlnego przejscia poziomu itp
             BackToMenu();
@@ -78,17 +86,19 @@ public class GameManager : MonoBehaviour
     {
         if (isPause)
         {
+            player.SetActive(true);
             pauseUI.SetActive(false);
             isPause = false;
             Time.timeScale = 1;
         }
         else
         {
+            player.SetActive(false);
             pauseUI.SetActive(true);
             isPause = true;
-            Time.timeScale = 0;
+            Time.timeScale = 0;  
         }
-        
+
     }
 
     public void BackToMenu()
