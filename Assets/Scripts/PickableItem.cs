@@ -14,7 +14,8 @@ public class PickableItem : GameManagerInitialazor
         if (other.tag == "Player")
         {
             gameManager.PickItem(ItemToPick);
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
+//            Destroy(this.gameObject);
         }
     }
 }

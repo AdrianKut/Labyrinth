@@ -16,7 +16,6 @@ public class ObstaclesObject : GameManagerInitialazor
         if (other.tag == "Player")
         {
             gameManager.HitObstacles(typeOfObstacle);
-            Debug.Log("GAME OVER!");
         }
     }
 }

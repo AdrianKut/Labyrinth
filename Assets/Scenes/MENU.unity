@@ -2803,6 +2803,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Transition Panel '
       objectReference: {fileID: 0}
+    - target: {fileID: 892301593235765553, guid: 94f45c73c8f3fd84faaa410fd7b86ef6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 892301593235765554, guid: 94f45c73c8f3fd84faaa410fd7b86ef6,
         type: 3}
       propertyPath: m_Pivot.x

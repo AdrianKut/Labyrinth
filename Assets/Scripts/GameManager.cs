@@ -12,7 +12,6 @@ public enum ItemToPick
 public enum Obstacle
 {
     Hole,
-
 }
 
 public abstract class GameManagerInitialazor : MonoBehaviour
@@ -23,18 +22,26 @@ public abstract class GameManagerInitialazor : MonoBehaviour
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI textFPS;
+    //TO DELETE BEFORE RELEASE
+    public TextMeshProUGUI textFPS;
+
+    public GameObject TransitionPanel;
+    public GameObject ButtonPause;
 
     public GameObject player;
     public Transform startPosition;
 
     public int goldToCollect;
+    private GameObject[] GoldGameObjects;
     public TextMeshProUGUI textPoints;
 
     public bool isGameOver;
 
     public bool isPause = false;
     public GameObject pauseUI;
+
+    public GameObject collectGoldInformationGameObject;
+    public GameObject levelCompleteGameObject;
 
     public void PickItem(ItemToPick item)
     {
@@ -54,28 +61,33 @@ public class GameManager : MonoBehaviour
         switch (obstacle)
         {
             case Obstacle.Hole:
-                player.transform.position = startPosition.position;
-                Debug.Log("Game Over");
+                GameOver();
                 break;
-         
-                
         }
     }
 
 
-
-    public GameObject collectGoldInformationGameObject;
-    public GameObject levelCompleteGameObject;
-
     void Start()
     {
-        Application.targetFrameRate = 999;
+
+        Application.targetFrameRate = 60;
         player.transform.position = startPosition.position;
 
         player = Instantiate(player, startPosition.position, Quaternion.identity);
 
-        goldToCollect = GameObject.FindGameObjectsWithTag("Gold").Length;
+        GoldGameObjects = GameObject.FindGameObjectsWithTag("Gold") as GameObject[];
+
+        goldToCollect = GoldGameObjects.Length;
         textPoints.text = "" + goldToCollect;
+
+        StartCoroutine(ShowTransitionEffect());
+    }
+
+    public IEnumerator ShowTransitionEffect()
+    {
+        TransitionPanel.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        TransitionPanel.SetActive(false);
     }
 
     void Update()
@@ -96,6 +108,7 @@ public class GameManager : MonoBehaviour
                 MainManager.instance.Save();
             }
 
+            ButtonPause.SetActive(false);
             StartCoroutine(ShowInformation("complete"));
         }
         else
@@ -114,7 +127,7 @@ public class GameManager : MonoBehaviour
                 yield return new WaitForSeconds(2.75f);
                 levelCompleteGameObject.SetActive(true);
 
-                //DODAÆ REKLAME :)
+                //DODAÆ REKLAME =]
                 BackToMenu();
                 break;
 
@@ -150,12 +163,23 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
-        //REKLAMA
     }
 
     public void GameOver()
     {
+        Handheld.Vibrate();
+        Debug.Log("Game Over | RESTART LEVEL");
 
+        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        player.transform.position = startPosition.position;
+        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
+
+        for (int i = 0; i < GoldGameObjects.Length; i++)
+            GoldGameObjects[i].SetActive(true);
+
+        goldToCollect = GoldGameObjects.Length;
+        textPoints.text = "" + goldToCollect;
     }
 
 
