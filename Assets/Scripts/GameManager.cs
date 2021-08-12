@@ -12,6 +12,7 @@ public enum ItemToPick
 public enum Obstacle
 {
     Hole,
+    Spike,
 }
 
 public abstract class GameManagerInitialazor : MonoBehaviour
@@ -61,6 +62,9 @@ public class GameManager : MonoBehaviour
         switch (obstacle)
         {
             case Obstacle.Hole:
+                GameOver();
+                break;
+            case Obstacle.Spike:
                 GameOver();
                 break;
         }
