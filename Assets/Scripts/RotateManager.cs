@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RotateManager : MonoBehaviour
 {
-
     public float turnSpeed;
     public Vector3 axis;
 

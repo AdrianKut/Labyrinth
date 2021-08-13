@@ -10,7 +10,6 @@ public class Camera : GameManagerInitialazor
 
     private Transform player;
 
-
     void Start()
     {
         InitializeGameManager();
@@ -31,7 +30,8 @@ public class Camera : GameManagerInitialazor
 
         } while (transform.position.y >= 16f);
 
-        yield return new WaitForSeconds(0.5f);
+        //0.5f
+        yield return new WaitForSeconds(1.25f);
 
         gameManager.ButtonPause.SetActive(true);
         StartCoroutine(gameManager.ShowTransitionEffect());

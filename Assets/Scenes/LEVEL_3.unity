@@ -353,7 +353,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh89124
+  m_Name: pb_Mesh18016
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2242,9 +2242,9 @@ Light:
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
-    m_Resolution: 0
+    m_Resolution: 2
     m_CustomResolution: -1
-    m_Strength: 0.396
+    m_Strength: 0.751
     m_Bias: 0
     m_NormalBias: 0
     m_NearPlane: 0.1
@@ -48053,7 +48053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f44815a3759224f9b3589f8b237441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSpeed: 60
+  turnSpeed: 50
   axis: {x: 0, y: 90, z: 0}
 --- !u!65 &1159561250
 BoxCollider:
@@ -51299,7 +51299,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh89238
+  m_Name: pb_Mesh58582
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
