@@ -45,25 +45,6 @@ public class MoveManager : MonoBehaviour
                 moveBack = false;
             }
         
-
-            //moveForward = true;
-            //moveBack = false;
-
-            //for (int i = 0; i < moveToBoundLoop; i++)
-            //{
-            //    transform.position = new Vector3(transform.position.x, transform.position.y, Mathf.Clamp(transform.position.z + moveSpeed, -zBound, zBound));
-            //    yield return new WaitForSeconds(0.01f);
-            //}
-
-            //moveForward = false;
-            //moveBack = true;
-
-            //for (int i = 0; i < moveToBoundLoop; i++)
-            //{
-            //    transform.position = new Vector3(transform.position.x, transform.position.y, Mathf.Clamp(transform.position.z - moveSpeed, -zBound, zBound));
-            //    yield return new WaitForSeconds(0.01f);
-            //}
-
         } while (true);
     }
 
@@ -71,9 +52,9 @@ public class MoveManager : MonoBehaviour
     private void Update()
     {
         if (moveForward)
-            rotateManager.axis = new Vector3(0, -90f, 0);
+            rotateManager.axis = new Vector3(0, 0, 90f);
         else if (moveBack)
-            rotateManager.axis = new Vector3(0, 90f, 0);
+            rotateManager.axis = new Vector3(0, 0, -90f);
     }
 
 }
