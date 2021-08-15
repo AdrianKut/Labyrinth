@@ -5,6 +5,7 @@ public class MenuManager : MonoBehaviour
 {
     [SerializeField] GameObject startGameView;
     [SerializeField] GameObject mainMenuView;
+    [SerializeField] GameObject helpView;
 
     public void LoadStartGameView()
     {
@@ -15,7 +16,14 @@ public class MenuManager : MonoBehaviour
     public void LoadMainMenuView()
     {
         startGameView.SetActive(false);
+        helpView.SetActive(false);
         mainMenuView.SetActive(true);
+    }
+
+    public void LoadHelpView()
+    {
+        helpView.SetActive(true);
+        mainMenuView.SetActive(false);
     }
 
     public void Exit()
