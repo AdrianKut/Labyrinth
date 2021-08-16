@@ -14,9 +14,7 @@ public class ObstaclesObject : GameManagerInitialazor
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
-        {
             gameManager.HitObstacles(typeOfObstacle);
-        }
     }
 
 

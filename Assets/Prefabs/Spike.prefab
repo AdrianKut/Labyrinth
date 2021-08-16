@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1196761007457667449}
   - component: {fileID: 2824993225125824220}
   - component: {fileID: 58708522259608086}
-  - component: {fileID: 2358290900761023907}
   - component: {fileID: 2004224323161543628}
   - component: {fileID: -4696347868603958897}
+  - component: {fileID: 5714524176769477587}
   m_Layer: 0
   m_Name: Spike
   m_TagString: Trap
@@ -84,19 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2358290900761023907
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2004224323161543619}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.026339518, y: 0.026339512, z: 0.022945574}
-  m_Center: {x: -0.000000007450582, y: 0.0000000041909516, z: -0.0035142824}
 --- !u!114 &2004224323161543628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,3 +111,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeOfObstacle: 1
+--- !u!135 &5714524176769477587
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004224323161543619}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.013
+  m_Center: {x: -0.000000007450582, y: 0.000000003259629, z: -0.003514275}

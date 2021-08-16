@@ -13,6 +13,7 @@ public enum Obstacle
 {
     Hole,
     Spike,
+    Rock,
 }
 
 public abstract class GameManagerInitialazor : MonoBehaviour
@@ -65,6 +66,9 @@ public class GameManager : MonoBehaviour
                 GameOver();
                 break;
             case Obstacle.Spike:
+                GameOver();
+                break;
+            case Obstacle.Rock:
                 GameOver();
                 break;
         }

@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 797052896989196801}
   - component: {fileID: 797052896989196806}
   - component: {fileID: 797052896989196807}
-  - component: {fileID: 797052896989196804}
   - component: {fileID: 797052896989196800}
+  - component: {fileID: 2916379520651487245}
   m_Layer: 0
   m_Name: Hole
   m_TagString: Trap
@@ -83,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &797052896989196804
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 797052896989196805}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 9.0776825, y: 4.5, z: 8.47677}
-  m_Center: {x: 0.12160301, y: 2, z: -0.094536394}
 --- !u!114 &797052896989196800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,3 +96,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeOfObstacle: 0
+--- !u!135 &2916379520651487245
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797052896989196805}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 4.1
+  m_Center: {x: 0, y: 0, z: 0}
