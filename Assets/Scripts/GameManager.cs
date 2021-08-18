@@ -35,7 +35,11 @@ public class GameManager : MonoBehaviour
 
     public int goldToCollect;
     private GameObject[] GoldGameObjects;
-    public TextMeshProUGUI textPoints;
+    public TextMeshProUGUI textGold;
+
+    public int keyToCollect;
+    private GameObject[] KeyGameObjects;
+    public TextMeshProUGUI textKey;
 
     public bool isGameOver;
 
@@ -51,9 +55,11 @@ public class GameManager : MonoBehaviour
         {
             case ItemToPick.Gold:
                 goldToCollect--;
-                textPoints.text = "" + goldToCollect;
+                textGold.text = "" + goldToCollect;
                 break;
             case ItemToPick.Key:
+                keyToCollect++;
+                textKey.text = "" + keyToCollect;
                 break;
         }
     }
@@ -83,12 +89,21 @@ public class GameManager : MonoBehaviour
 
         player = Instantiate(player, startPosition.position, Quaternion.identity);
 
-        GoldGameObjects = GameObject.FindGameObjectsWithTag("Gold") as GameObject[];
-
-        goldToCollect = GoldGameObjects.Length;
-        textPoints.text = "" + goldToCollect;
+        InitializeTextItemsToPick();
 
         StartCoroutine(ShowTransitionEffect());
+    }
+
+    private void InitializeTextItemsToPick()
+    {
+        GoldGameObjects = GameObject.FindGameObjectsWithTag("Gold") as GameObject[];
+        KeyGameObjects = GameObject.FindGameObjectsWithTag("Key") as GameObject[];
+
+        goldToCollect = GoldGameObjects.Length;
+        textGold.text = "" + goldToCollect;
+
+        keyToCollect = 0;
+        textKey.text = "0";
     }
 
     public IEnumerator ShowTransitionEffect()
@@ -186,8 +201,10 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < GoldGameObjects.Length; i++)
             GoldGameObjects[i].SetActive(true);
 
-        goldToCollect = GoldGameObjects.Length;
-        textPoints.text = "" + goldToCollect;
+        for (int i = 0; i < KeyGameObjects.Length; i++)
+            KeyGameObjects[i].SetActive(true);
+
+        InitializeTextItemsToPick();
     }
 
 

@@ -12,7 +12,7 @@ public class MoveManager : MonoBehaviour
     public bool moveBack;
     public bool moveLeft;
     public bool moveRight;
-    
+
     RotateManager rotateManager;
 
     public bool startedOnce = false;

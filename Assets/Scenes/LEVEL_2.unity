@@ -1745,7 +1745,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -4823,7 +4823,9 @@ MonoBehaviour:
   player: {fileID: 6221922016801618876, guid: 4ad8d5dc7b73f464297dae34222c1fb1, type: 3}
   startPosition: {fileID: 452879725}
   goldToCollect: 0
-  textPoints: {fileID: 249807845}
+  textGold: {fileID: 249807845}
+  keyToCollect: 0
+  textKey: {fileID: 0}
   isGameOver: 0
   isPause: 0
   pauseUI: {fileID: 807737502}
@@ -13210,7 +13212,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh121996
+  m_Name: pb_Mesh55370
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14459,7 +14461,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh122196
+  m_Name: pb_Mesh55570
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15380,7 +15382,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-129242
+  m_Name: pb_Mesh-237288
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15749,7 +15751,7 @@ PrefabInstance:
     - target: {fileID: 1204472177635078062, guid: 9bbb3d2b9ba735347b5b02e249031760,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.3
+      value: 7.353
       objectReference: {fileID: 0}
     - target: {fileID: 1204472177635078062, guid: 9bbb3d2b9ba735347b5b02e249031760,
         type: 3}

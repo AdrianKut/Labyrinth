@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Gold
   - Trap
+  - Key
   layers:
   - Default
   - TransparentFX

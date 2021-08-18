@@ -130,7 +130,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-90194
+  m_Name: pb_Mesh-35342
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -470,7 +470,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &181263999
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1923,7 +1923,9 @@ MonoBehaviour:
   player: {fileID: 6221922016801618876, guid: 4ad8d5dc7b73f464297dae34222c1fb1, type: 3}
   startPosition: {fileID: 452879725}
   goldToCollect: 0
-  textPoints: {fileID: 249807845}
+  textGold: {fileID: 249807845}
+  keyToCollect: 0
+  textKey: {fileID: 0}
   isGameOver: 0
   isPause: 0
   pauseUI: {fileID: 807737502}
@@ -2742,6 +2744,7 @@ MonoBehaviour:
   CenterPoint: {fileID: 722732822}
   offset: {x: 0, y: 8, z: -4}
   canFollowPlayer: 0
+  cameraLimitYPosition: 14
 --- !u!1 &981046155
 GameObject:
   m_ObjectHideFlags: 0
