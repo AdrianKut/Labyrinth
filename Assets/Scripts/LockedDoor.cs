@@ -16,13 +16,11 @@ public class LockedDoor : GameManagerInitialazor
         {
             if (gameManager.keyToCollect == 1)
             {
-                Debug.Log("OPENING");
                 gameManager.keyToCollect = 0;
-                gameManager.textKey.text = "" + gameManager.keyToCollect;
                 StartCoroutine(HideWall());
             }
             else
-                Debug.Log("FIND KEY!!!");
+                gameManager.StartCoroutine(gameManager.ShowMessageOnScreen(2));
         }
     }
 
@@ -34,9 +32,9 @@ public class LockedDoor : GameManagerInitialazor
             yield return new WaitForSeconds(0.01f);
 
         } while (transform.position.y >= -1);
-
-        
     }
+
+
 
 
 }

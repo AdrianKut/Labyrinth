@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum ItemToPick
 {
@@ -26,28 +27,30 @@ public class GameManager : MonoBehaviour
 {
     //TO DELETE BEFORE RELEASE
     public TextMeshProUGUI textFPS;
-
+    
     public GameObject TransitionPanel;
     public GameObject ButtonPause;
+    public bool isGameOver;
 
+    public bool isPause = false;
+    public GameObject pauseUI;
+
+    [Header("Player")]
     public GameObject player;
     public Transform startPosition;
 
+    [Header("Items")]
     public int goldToCollect;
     private GameObject[] GoldGameObjects;
     public TextMeshProUGUI textGold;
 
     public int keyToCollect;
     private GameObject[] KeyGameObjects;
-    public TextMeshProUGUI textKey;
 
-    public bool isGameOver;
 
-    public bool isPause = false;
-    public GameObject pauseUI;
-
-    public GameObject collectGoldInformationGameObject;
-    public GameObject levelCompleteGameObject;
+    [Header("Messages")]
+    public Texture[] TextureMessage; // 0 - Collect Gold | 1 - Level complete | 2 - You need A Key | 
+    public GameObject TextMessageGameObject;
 
     public void PickItem(ItemToPick item)
     {
@@ -59,7 +62,6 @@ public class GameManager : MonoBehaviour
                 break;
             case ItemToPick.Key:
                 keyToCollect++;
-                textKey.text = "" + keyToCollect;
                 break;
         }
     }
@@ -80,14 +82,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        player.transform.position = startPosition.position;
+        player = Instantiate(player, startPosition.position, Quaternion.identity);
+    }
 
     void Start()
     {
 
         Application.targetFrameRate = 60;
-        player.transform.position = startPosition.position;
-
-        player = Instantiate(player, startPosition.position, Quaternion.identity);
 
         InitializeTextItemsToPick();
 
@@ -103,7 +107,6 @@ public class GameManager : MonoBehaviour
         textGold.text = "" + goldToCollect;
 
         keyToCollect = 0;
-        textKey.text = "0";
     }
 
     public IEnumerator ShowTransitionEffect()
@@ -132,35 +135,23 @@ public class GameManager : MonoBehaviour
             }
 
             ButtonPause.SetActive(false);
-            StartCoroutine(ShowInformation("complete"));
+            StartCoroutine(ShowMessageOnScreen(1, true));
         }
         else
         {
-            StartCoroutine(ShowInformation("collectGold"));
+            StartCoroutine(ShowMessageOnScreen(0));
         }
     }
 
-    IEnumerator ShowInformation(string message)
+    public IEnumerator ShowMessageOnScreen(int messageNum, bool backToMenu = false)
     {
-        switch (message)
-        {
-            case "complete":
-                player.SetActive(false);
-                levelCompleteGameObject.SetActive(true);
-                yield return new WaitForSeconds(2.75f);
-                levelCompleteGameObject.SetActive(true);
+        TextMessageGameObject.SetActive(true);
+        TextMessageGameObject.GetComponent<RawImage>().texture = TextureMessage[messageNum];
+        yield return new WaitForSeconds(2.5f);
+        TextMessageGameObject.SetActive(false);
 
-                //DODAÆ REKLAME =]
-                BackToMenu();
-                break;
-
-            case "collectGold":
-                collectGoldInformationGameObject.SetActive(true);
-                yield return new WaitForSeconds(2f);
-                collectGoldInformationGameObject.SetActive(false);
-                break;
-
-        }
+        if (backToMenu)
+            BackToMenu();
     }
 
     public void Pause()
