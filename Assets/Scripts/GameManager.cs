@@ -27,7 +27,8 @@ public class GameManager : MonoBehaviour
 {
     //TO DELETE BEFORE RELEASE
     public TextMeshProUGUI textFPS;
-    
+
+    public GameObject MainUI;
     public GameObject TransitionPanel;
     public GameObject ButtonPause;
     public GameObject pauseUI;
@@ -91,13 +92,17 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(ShowTransitionEffect());
+        HideUI();
+
         Timer.ResetTime();
         Application.targetFrameRate = 60;
-
+        
         InitializeTextItemsToPick();
-
-        StartCoroutine(ShowTransitionEffect());
     }
+
+    public void HideUI() => MainUI.SetActive(false);
+    public void ShowUI() => MainUI.SetActive(true);
 
     private void InitializeTextItemsToPick()
     {
