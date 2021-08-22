@@ -32,7 +32,9 @@ public class GameManager : MonoBehaviour
     public GameObject ButtonPause;
     public bool isGameOver;
 
-    public bool isPause = false;
+    public bool isPaused = false;
+    public bool isStarted = false;
+    public bool isFinished = false;
     public GameObject pauseUI;
 
     [Header("Player")]
@@ -46,6 +48,8 @@ public class GameManager : MonoBehaviour
 
     public int keyToCollect;
     private GameObject[] KeyGameObjects;
+
+    [Header("Timer")]
 
 
     [Header("Messages")]
@@ -90,7 +94,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-
+        Timer.ResetTime();
         Application.targetFrameRate = 60;
 
         InitializeTextItemsToPick();
@@ -125,6 +129,7 @@ public class GameManager : MonoBehaviour
     {
         if (goldToCollect == 0)
         {
+            isFinished = true;
             string[] spliter = SceneManager.GetActiveScene().name.Split('_');
             int currentLevel = int.Parse(spliter[1]);
 
@@ -134,8 +139,11 @@ public class GameManager : MonoBehaviour
                 MainManager.instance.Save();
             }
 
+            player.SetActive(false);
             ButtonPause.SetActive(false);
             StartCoroutine(ShowMessageOnScreen(1, true));
+
+            Debug.Log(Timer.GetTime());
         }
         else
         {
@@ -156,18 +164,18 @@ public class GameManager : MonoBehaviour
 
     public void Pause()
     {
-        if (isPause)
+        if (isPaused)
         {
             player.SetActive(true);
             pauseUI.SetActive(false);
-            isPause = false;
+            isPaused = false;
             Time.timeScale = 1;
         }
         else
         {
             player.SetActive(false);
             pauseUI.SetActive(true);
-            isPause = true;
+            isPaused = true;
             Time.timeScale = 0;
         }
 
@@ -182,6 +190,8 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Handheld.Vibrate();
+        Timer.ResetTime();
+
         Debug.Log("Game Over | RESTART LEVEL");
 
         player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;

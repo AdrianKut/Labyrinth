@@ -2627,10 +2627,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2694508184092174919, guid: d8faf35b7fc070542a52ad6cca65a6c5,
+        type: 3}
+      propertyPath: TextMeshProUGUITimer
+      value: 
+      objectReference: {fileID: 1920116601}
     - target: {fileID: 2694508184784795873, guid: d8faf35b7fc070542a52ad6cca65a6c5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2694508184784795873, guid: d8faf35b7fc070542a52ad6cca65a6c5,
         type: 3}
@@ -5246,7 +5251,7 @@ PrefabInstance:
     - target: {fileID: 5063477796854992671, guid: 2491a1183daf60d498a98d72e10c27a6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5063477796854992671, guid: 2491a1183daf60d498a98d72e10c27a6,
         type: 3}
@@ -5409,6 +5414,18 @@ GameObject:
 --- !u!114 &1920116600 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5063477798281097153, guid: 2491a1183daf60d498a98d72e10c27a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1920116594}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1920116601 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 431223791, guid: 2491a1183daf60d498a98d72e10c27a6,
     type: 3}
   m_PrefabInstance: {fileID: 1920116594}
   m_PrefabAsset: {fileID: 0}
