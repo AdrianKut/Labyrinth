@@ -30,12 +30,12 @@ public class GameManager : MonoBehaviour
     
     public GameObject TransitionPanel;
     public GameObject ButtonPause;
-    public bool isGameOver;
+    public GameObject pauseUI;
 
+    public bool isGameOver;
     public bool isPaused = false;
     public bool isStarted = false;
     public bool isFinished = false;
-    public GameObject pauseUI;
 
     [Header("Player")]
     public GameObject player;
@@ -49,12 +49,9 @@ public class GameManager : MonoBehaviour
     public int keyToCollect;
     private GameObject[] KeyGameObjects;
 
-    [Header("Timer")]
-
-
     [Header("Messages")]
-    public Texture[] TextureMessage; // 0 - Collect Gold | 1 - Level complete | 2 - You need A Key | 
     public GameObject TextMessageGameObject;
+    public Texture[] TextureMessage; // 0 - Collect Gold | 1 - Level complete | 2 - You need A Key | 
 
     public void PickItem(ItemToPick item)
     {
