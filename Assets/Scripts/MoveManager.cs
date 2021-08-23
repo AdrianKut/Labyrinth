@@ -16,6 +16,7 @@ public class MoveManager : MonoBehaviour
     RotateManager rotateManager;
 
     public bool startedOnce = false;
+    public bool canChangeRotate = false;
     private void Start()
     {
         rotateManager = GetComponent<RotateManager>();
@@ -31,10 +32,20 @@ public class MoveManager : MonoBehaviour
         }
 
 
-        if (moveForward)
-            rotateManager.axis = new Vector3(0, 0, 90f);
-        else if (moveBack)
-            rotateManager.axis = new Vector3(0, 0, -90f);
+        if (canChangeRotate)
+        {
+            if (moveForward)
+                rotateManager.axis = new Vector3(0, 0, 90f);
+            else if (moveBack)
+                rotateManager.axis = new Vector3(0, 0, -90f);
+
+            if (moveRight)
+                rotateManager.axis = new Vector3(0, 0, -90f);
+            else if (moveLeft)
+                rotateManager.axis = new Vector3(0, 0, 90f);
+        }
+
+
 
 
     }
