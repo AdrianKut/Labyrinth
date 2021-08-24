@@ -1846,6 +1846,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasTransition
       objectReference: {fileID: 0}
+    - target: {fileID: 2060685316336902072, guid: e11c414bc257486418ddd844eb93e8f4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e11c414bc257486418ddd844eb93e8f4, type: 3}
 --- !u!1 &863012413
@@ -4436,6 +4441,7 @@ MonoBehaviour:
   moveLeft: 0
   moveRight: 1
   startedOnce: 0
+  canChangeRotate: 0
 --- !u!1 &1293062359
 GameObject:
   m_ObjectHideFlags: 0
@@ -5022,6 +5028,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: BackToMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 8735575734741908269, guid: 2491a1183daf60d498a98d72e10c27a6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8735575734741908273, guid: 2491a1183daf60d498a98d72e10c27a6,
         type: 3}
       propertyPath: m_RootOrder
@@ -5290,6 +5301,7 @@ MonoBehaviour:
   moveLeft: 0
   moveRight: 1
   startedOnce: 0
+  canChangeRotate: 0
 --- !u!4 &1349742116 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1196761007457667449, guid: 3b6bf937ef783e24489d9614d11e7bb3,
@@ -5329,6 +5341,7 @@ MonoBehaviour:
   moveLeft: 1
   moveRight: 0
   startedOnce: 0
+  canChangeRotate: 0
 --- !u!850595691 &1431974931
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -5959,6 +5972,7 @@ MonoBehaviour:
   moveLeft: 1
   moveRight: 0
   startedOnce: 0
+  canChangeRotate: 0
 --- !u!1001 &1681398650
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11319,7 +11333,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-168118
+  m_Name: pb_Mesh-57532
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

@@ -14,7 +14,7 @@ public class LockedDoor : GameManagerInitialazor
     {
         if (other.gameObject.tag == "Player")
         {
-            if (gameManager.keyToCollect == 1)
+            if (gameManager.keyToCollect >= 1)
             {
                 gameManager.keyToCollect = 0;
                 StartCoroutine(HideWall());
