@@ -24,8 +24,6 @@ public class Camera : GameManagerInitialazor
     IEnumerator CameraToMap()
     {
         // USUN¥Æ KOMENTARZE PRZED WYDANIEM
-
-
         //yield return new WaitForSeconds(2f);
         //do
         //{
@@ -35,10 +33,8 @@ public class Camera : GameManagerInitialazor
         //} while (transform.position.y >= cameraLimitYPosition);
 
         //yield return new WaitForSeconds(1.5f);
-
         //StartCoroutine(gameManager.ShowTransitionEffect());
-
-        canFollowPlayer = true;
+        //canFollowPlayer = true;
 
         //// TO TE¯ USUN¥Æ
         yield return new WaitForSeconds(0.01f);

@@ -29195,6 +29195,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e11c414bc257486418ddd844eb93e8f4, type: 3}
+--- !u!1 &1998281604 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2060685316336902072, guid: e11c414bc257486418ddd844eb93e8f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1998281603}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2001712432 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4834089113160336620, guid: e37a0508d726d5f4ea455627bc572dc1,
@@ -31262,7 +31268,7 @@ PrefabInstance:
         type: 3}
       propertyPath: TransitionPanel
       value: 
-      objectReference: {fileID: 5063477797825550708}
+      objectReference: {fileID: 1998281604}
     - target: {fileID: 2694508184784795878, guid: d8faf35b7fc070542a52ad6cca65a6c5,
         type: 3}
       propertyPath: TextMessageGameObject
@@ -31720,12 +31726,6 @@ GameObject:
 --- !u!1 &5063477797825550707 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8735575736086917951, guid: 2491a1183daf60d498a98d72e10c27a6,
-    type: 3}
-  m_PrefabInstance: {fileID: 5063477797825550703}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5063477797825550708 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8455763709706513897, guid: 2491a1183daf60d498a98d72e10c27a6,
     type: 3}
   m_PrefabInstance: {fileID: 5063477797825550703}
   m_PrefabAsset: {fileID: 0}

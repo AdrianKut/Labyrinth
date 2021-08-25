@@ -1596,7 +1596,7 @@ PrefabInstance:
         type: 3}
       propertyPath: TransitionPanel
       value: 
-      objectReference: {fileID: 2050674974}
+      objectReference: {fileID: 2012282072}
     - target: {fileID: 2694508184784795878, guid: d8faf35b7fc070542a52ad6cca65a6c5,
         type: 3}
       propertyPath: TextMessageGameObject
@@ -4560,6 +4560,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e11c414bc257486418ddd844eb93e8f4, type: 3}
+--- !u!1 &2012282072 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2060685316336902072, guid: e11c414bc257486418ddd844eb93e8f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 2012282071}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2036085427
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5038,12 +5044,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2050674974 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8455763709706513897, guid: 2491a1183daf60d498a98d72e10c27a6,
-    type: 3}
-  m_PrefabInstance: {fileID: 2050674972}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2050674975 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8735575735324223298, guid: 2491a1183daf60d498a98d72e10c27a6,

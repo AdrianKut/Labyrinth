@@ -822,7 +822,7 @@ PrefabInstance:
     - target: {fileID: 2060685316336902052, guid: e11c414bc257486418ddd844eb93e8f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2060685316336902052, guid: e11c414bc257486418ddd844eb93e8f4,
         type: 3}
@@ -921,6 +921,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e11c414bc257486418ddd844eb93e8f4, type: 3}
+--- !u!1 &405652002 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2060685316336902072, guid: e11c414bc257486418ddd844eb93e8f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 405652001}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &444740180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22539,7 +22545,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1556043633
 GameObject:
@@ -23518,12 +23524,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8735575736241794369}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &892301593188532392 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8455763709706513897, guid: 2491a1183daf60d498a98d72e10c27a6,
-    type: 3}
-  m_PrefabInstance: {fileID: 8735575736241794369}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1204472177541086704
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23791,7 +23791,7 @@ PrefabInstance:
     - target: {fileID: 2694508184784795873, guid: d8faf35b7fc070542a52ad6cca65a6c5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2694508184784795873, guid: d8faf35b7fc070542a52ad6cca65a6c5,
         type: 3}
@@ -23887,7 +23887,7 @@ PrefabInstance:
         type: 3}
       propertyPath: TransitionPanel
       value: 
-      objectReference: {fileID: 892301593188532392}
+      objectReference: {fileID: 405652002}
     - target: {fileID: 2694508184784795878, guid: d8faf35b7fc070542a52ad6cca65a6c5,
         type: 3}
       propertyPath: TextMessageGameObject
