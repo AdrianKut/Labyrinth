@@ -12,7 +12,7 @@ public class Timer : MonoBehaviour
     public static void ResetTime() => time = 0;
     public static string GetTime() => sB.ToString();
 
-    private void HideTimer() => TextMeshProUGUITimer.text = "";
+    public void HideTimer() => TextMeshProUGUITimer.text = "";
 
     private GameManager gameManager;
     private void Start()

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -11,18 +12,44 @@ public class LevelManager : MonoBehaviour
         LoadButtonsLevel();
     }
 
-    private void LoadButtonsLevel()
+    private void OnEnable()
     {
-        for (int i = 0; i < MainManager.instance.currentLevelCompleted + 1; i++)
+        LoadButtonsLevel();
+    }
+
+    public void LoadButtonsLevel()
+    {
+        if (MainManager.instance.currentLevelCompleted == 0)
         {
-            levels[i].GetComponent<Button>().interactable = true;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                levels[i].GetComponent<Button>().interactable = false;
+            }
+            levels[0].GetComponent<Button>().interactable = true;
+        }
+        else
+        {
+            for (int i = 0; i < MainManager.instance.currentLevelCompleted + 1; i++)
+            {
+                levels[i].GetComponent<Button>().interactable = true;
+            }
         }
     }
+
 
     public void LoadSelectedLevel()
     {
         var sceneName = EventSystem.current.currentSelectedGameObject.name.ToUpper();
-        SceneManager.LoadScene(sceneName);
+        StartCoroutine(LoadYourAsyncScene(sceneName));
+    }
+
+    IEnumerator LoadYourAsyncScene(string nameOfScene)
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(nameOfScene);
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
     }
 
 

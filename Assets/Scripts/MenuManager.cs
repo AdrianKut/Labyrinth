@@ -6,6 +6,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject startGameView;
     [SerializeField] GameObject mainMenuView;
     [SerializeField] GameObject helpView;
+    [SerializeField] GameObject statsView;
 
     public void LoadStartGameView()
     {
@@ -17,12 +18,19 @@ public class MenuManager : MonoBehaviour
     {
         startGameView.SetActive(false);
         helpView.SetActive(false);
+        statsView.SetActive(false);
         mainMenuView.SetActive(true);
     }
 
     public void LoadHelpView()
     {
         helpView.SetActive(true);
+        mainMenuView.SetActive(false);
+    }
+
+    public void LoadStatsView()
+    {
+        statsView.SetActive(true);
         mainMenuView.SetActive(false);
     }
 
@@ -34,4 +42,6 @@ public class MenuManager : MonoBehaviour
         Application.Quit();
 #endif
     }
+
+    
 }

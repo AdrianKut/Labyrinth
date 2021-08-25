@@ -33,6 +33,10 @@ public class GameManager : MonoBehaviour
     public GameObject ButtonPause;
     public GameObject pauseUI;
 
+    [Header("Level Complete")]
+    public GameObject LevelCompleteUI;
+    public TextMeshProUGUI timerText;
+
     public bool isGameOver;
     public bool isPaused = false;
     public bool isStarted = false;
@@ -97,7 +101,7 @@ public class GameManager : MonoBehaviour
 
         Timer.ResetTime();
         Application.targetFrameRate = 60;
-        
+
         InitializeTextItemsToPick();
     }
 
@@ -141,11 +145,74 @@ public class GameManager : MonoBehaviour
                 MainManager.instance.Save();
             }
 
+            int old_minutes, old_seconds, old_milliseconds, currentMinutes, currentSeconds, currentMilliseconds;
+
+            spliter = MainManager.instance.levelsTime[currentLevel - 1].Split(':');
+            old_minutes = int.Parse(spliter[0]);
+            old_seconds = int.Parse(spliter[1]);
+            old_milliseconds = int.Parse(spliter[2]);
+
+            spliter = Timer.GetTime().Split(':');
+            currentMinutes = int.Parse(spliter[0]);
+            currentSeconds = int.Parse(spliter[1]);
+            currentMilliseconds = int.Parse(spliter[2]);
+
+            Debug.Log($"STARY  CZAS: MIN[{old_minutes}] SEC[{old_seconds}] MS[{old_milliseconds}]");
+            Debug.Log($"NOWY CZAS: MIN[{currentMinutes}] SEC[{currentSeconds}] MS[{currentMilliseconds}]");
+
+            if (old_minutes == 0 && old_seconds == 0 && old_milliseconds == 0)
+            {
+                Debug.Log("SAVE PIERWSZY RAZ");
+                MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
+                MainManager.instance.Save();
+            }
+            else if (currentMinutes == 0 && old_minutes == 0)
+            {
+                if (currentSeconds <= old_seconds && currentMilliseconds <= old_milliseconds)
+                {
+                    Debug.Log("SAVE GDY MINUT 0");
+                    MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
+                    MainManager.instance.Save();
+                }
+            }
+            else if (currentSeconds == 0 && old_seconds == 0)
+            {
+                if (currentMilliseconds <= old_milliseconds)
+                {
+                    Debug.Log("SAVE GDY MINUT 0 I SEKUND 0 ");
+                    MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
+                    MainManager.instance.Save();
+                }
+            }
+            else if (true)
+            {
+                if (currentMilliseconds <= old_milliseconds)
+                {
+                    Debug.Log("SAVE GDY MINUT 0 I SEKUND 0 ");
+                    MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
+                    MainManager.instance.Save();
+                }
+            }
+
+
+            //else if (currentMinutes <= old_minutes && currentSeconds <= old_seconds && currentMilliseconds <= old_milliseconds)
+            //{
+            //    Debug.Log("NOWY REKORD CZASU");
+            //    MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
+            //    MainManager.instance.Save();
+            //}
+
+
+
+
             player.SetActive(false);
             ButtonPause.SetActive(false);
-            StartCoroutine(ShowMessageOnScreen(1, true));
 
-            Debug.Log(Timer.GetTime());
+            LevelCompleteUI.SetActive(true);
+
+            var timer = this.gameObject.GetComponent<Timer>();
+            timer.HideTimer();
+            timerText.SetText("          " + Timer.GetTime());
         }
         else
         {
@@ -183,11 +250,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void BackToMenu()
-    {
-        Time.timeScale = 1;
-        SceneManager.LoadScene(0);
-    }
 
     public void GameOver()
     {
@@ -210,5 +272,35 @@ public class GameManager : MonoBehaviour
         InitializeTextItemsToPick();
     }
 
+    #region LevelCompleteUI
+    public void BackToMenu()
+    {
+        Time.timeScale = 1;
+        StartCoroutine(LoadYourAsyncScene(0));
+    }
+
+    public void Restart()
+    {
+        StartCoroutine(LoadYourAsyncScene(SceneManager.GetActiveScene().buildIndex));
+    }
+
+    public void NextLevel()
+    {
+        int currentSceneNum = SceneManager.GetActiveScene().buildIndex;
+        if (currentSceneNum != 10)
+            StartCoroutine(LoadYourAsyncScene(currentSceneNum + 1));
+        else
+            StartCoroutine(LoadYourAsyncScene(1));
+    }
+
+    IEnumerator LoadYourAsyncScene(int numSceneToLoad)
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(numSceneToLoad);
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+    }
+    #endregion
 
 }
