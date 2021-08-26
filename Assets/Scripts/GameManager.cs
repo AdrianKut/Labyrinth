@@ -157,53 +157,38 @@ public class GameManager : MonoBehaviour
             currentSeconds = int.Parse(spliter[1]);
             currentMilliseconds = int.Parse(spliter[2]);
 
-            Debug.Log($"STARY  CZAS: MIN[{old_minutes}] SEC[{old_seconds}] MS[{old_milliseconds}]");
-            Debug.Log($"NOWY CZAS: MIN[{currentMinutes}] SEC[{currentSeconds}] MS[{currentMilliseconds}]");
+            Debug.Log($"OLD: MIN[{old_minutes}] SEC[{old_seconds}] MS[{old_milliseconds}]");
+            Debug.Log($"NEW: MIN[{currentMinutes}] SEC[{currentSeconds}] MS[{currentMilliseconds}]");
 
             if (old_minutes == 0 && old_seconds == 0 && old_milliseconds == 0)
             {
-                Debug.Log("SAVE PIERWSZY RAZ");
                 MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
                 MainManager.instance.Save();
             }
-            else if (currentMinutes == 0 && old_minutes == 0)
+            else if (currentMinutes == old_minutes)
             {
-                if (currentSeconds <= old_seconds && currentMilliseconds <= old_milliseconds)
+                if (currentSeconds == old_seconds)
                 {
-                    Debug.Log("SAVE GDY MINUT 0");
+                    if (currentMilliseconds <= old_milliseconds)
+                    {
+                        Debug.Log("SAVE MS");
+                        MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
+                        MainManager.instance.Save();
+                    }
+                }
+                else if (currentSeconds <= old_seconds)
+                {
+                    Debug.Log("SAVE GDY S");
                     MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
                     MainManager.instance.Save();
                 }
             }
-            else if (currentSeconds == 0 && old_seconds == 0)
+            else if (currentMinutes <= old_minutes)
             {
-                if (currentMilliseconds <= old_milliseconds)
-                {
-                    Debug.Log("SAVE GDY MINUT 0 I SEKUND 0 ");
-                    MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
-                    MainManager.instance.Save();
-                }
+                Debug.Log("SAVE GDY MIN");
+                MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
+                MainManager.instance.Save();
             }
-            else if (true)
-            {
-                if (currentMilliseconds <= old_milliseconds)
-                {
-                    Debug.Log("SAVE GDY MINUT 0 I SEKUND 0 ");
-                    MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
-                    MainManager.instance.Save();
-                }
-            }
-
-
-            //else if (currentMinutes <= old_minutes && currentSeconds <= old_seconds && currentMilliseconds <= old_milliseconds)
-            //{
-            //    Debug.Log("NOWY REKORD CZASU");
-            //    MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
-            //    MainManager.instance.Save();
-            //}
-
-
-
 
             player.SetActive(false);
             ButtonPause.SetActive(false);

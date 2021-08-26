@@ -34,7 +34,8 @@ public class Camera : GameManagerInitialazor
 
         //yield return new WaitForSeconds(1.5f);
         //StartCoroutine(gameManager.ShowTransitionEffect());
-        //canFollowPlayer = true;
+        
+        canFollowPlayer = true;
 
         //// TO TE¯ USUN¥Æ
         yield return new WaitForSeconds(0.01f);

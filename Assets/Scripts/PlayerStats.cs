@@ -1,14 +1,22 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    [SerializeField]
-    TextMeshProUGUI textLevelsTime;
+    [SerializeField] TextMeshProUGUI textLevelsTime;
+    [SerializeField] GameObject gameObjectAskReset;
+    [SerializeField] Animator animator;
 
     private void Start()
     {
         LoadLevelTime();
+        animator = gameObjectAskReset.GetComponent<Animator>();
+    }
+
+    private void OnEnable()
+    {
+        gameObjectAskReset.SetActive(false);
     }
 
     public void LoadLevelTime()
@@ -30,6 +38,22 @@ public class PlayerStats : MonoBehaviour
         
         textLevelsTime.text = "";
         LoadLevelTime();
+
+        StartCoroutine(DisableAfterSeconds());
     }
+
+
+    public void EnableAskReset() => gameObjectAskReset.SetActive(true);
+    public void DisableAskReset() => StartCoroutine(DisableAfterSeconds());
+
+    IEnumerator DisableAfterSeconds()
+    {
+        animator.SetTrigger("Out");
+        yield return new WaitForSeconds(0.25f);
+        gameObjectAskReset.SetActive(false);
+    }
+
+
+
 
 }
