@@ -44,10 +44,6 @@ public class MoveManager : MonoBehaviour
             else if (moveLeft)
                 rotateManager.axis = new Vector3(0, 0, 90f);
         }
-
-
-
-
     }
 
     IEnumerator Move()
