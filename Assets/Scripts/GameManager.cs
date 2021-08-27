@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
     }
 
     void Start()
-    {
+    { 
         StartCoroutine(ShowTransitionEffect());
         HideUI();
 
@@ -145,50 +145,60 @@ public class GameManager : MonoBehaviour
                 MainManager.instance.Save();
             }
 
-            int old_minutes, old_seconds, old_milliseconds, currentMinutes, currentSeconds, currentMilliseconds;
+            float old_minutes, old_seconds, old_milliseconds, currentMinutes, currentSeconds, currentMilliseconds;
 
             spliter = MainManager.instance.levelsTime[currentLevel - 1].Split(':');
-            old_minutes = int.Parse(spliter[0]);
-            old_seconds = int.Parse(spliter[1]);
-            old_milliseconds = int.Parse(spliter[2]);
+            old_minutes = float.Parse(spliter[0]);
+            old_seconds = float.Parse(spliter[1]);
+            old_milliseconds = float.Parse(spliter[2]);
 
             spliter = Timer.GetTime().Split(':');
-            currentMinutes = int.Parse(spliter[0]);
-            currentSeconds = int.Parse(spliter[1]);
-            currentMilliseconds = int.Parse(spliter[2]);
+            currentMinutes = float.Parse(spliter[0]);
+            currentSeconds = float.Parse(spliter[1]);
+            currentMilliseconds = float.Parse(spliter[2]);
 
             Debug.Log($"OLD: MIN[{old_minutes}] SEC[{old_seconds}] MS[{old_milliseconds}]");
             Debug.Log($"NEW: MIN[{currentMinutes}] SEC[{currentSeconds}] MS[{currentMilliseconds}]");
+            
+            float old_allIntoSeconds = (old_minutes * 60) + old_seconds + (old_milliseconds / 100);
+            float new_TimeToSeconds = (currentMinutes * 60) + currentSeconds + (currentMilliseconds / 100);
+            
+            Debug.Log("OLD TIME: " + old_allIntoSeconds);
+            Debug.Log("NEW TIME: " + new_TimeToSeconds);
 
             if (old_minutes == 0 && old_seconds == 0 && old_milliseconds == 0)
             {
                 MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
                 MainManager.instance.Save();
             }
-            else if (currentMinutes == old_minutes)
+            else if (new_TimeToSeconds <= old_allIntoSeconds)
             {
-                if (currentSeconds == old_seconds)
-                {
-                    if (currentMilliseconds <= old_milliseconds)
-                    {
-                        Debug.Log("SAVE MS");
-                        MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
-                        MainManager.instance.Save();
-                    }
-                }
-                else if (currentSeconds <= old_seconds)
-                {
-                    Debug.Log("SAVE GDY S");
-                    MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
-                    MainManager.instance.Save();
-                }
-            }
-            else if (currentMinutes <= old_minutes)
-            {
-                Debug.Log("SAVE GDY MIN");
+                Debug.Log($"NOWY REKORD: {new_TimeToSeconds} <= {old_allIntoSeconds}");
                 MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
                 MainManager.instance.Save();
             }
+
+            //else if (currentMinutes == old_minutes)
+            //{
+            //    if (currentSeconds == old_seconds)
+            //    {
+            //        if (currentMilliseconds <= old_milliseconds)
+            //        {
+            //            MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
+            //            MainManager.instance.Save();
+            //        }
+            //    }
+            //    else if (currentSeconds <= old_seconds)
+            //    {
+            //        MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
+            //        MainManager.instance.Save();
+            //    }
+            //}
+            //else if (currentMinutes <= old_minutes)
+            //{
+            //    MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
+            //    MainManager.instance.Save();
+            //}
 
             player.SetActive(false);
             ButtonPause.SetActive(false);

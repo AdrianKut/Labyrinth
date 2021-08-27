@@ -11,6 +11,11 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI titleText;
 
+    private void Start()
+    {
+        Application.targetFrameRate = 60;
+    }
+
     public void LoadStartGameView()
     {
         titleText.text = "CHOOSE LEVEL";
