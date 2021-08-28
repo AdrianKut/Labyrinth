@@ -12739,6 +12739,8 @@ MonoBehaviour:
   offset: {x: 0, y: 8, z: -4}
   canFollowPlayer: 0
   cameraLimitYPosition: 22
+  FirstCameraGameObject: {fileID: 0}
+  SecondCameraGameObject: {fileID: 0}
 --- !u!95 &963194230
 Animator:
   serializedVersion: 3
@@ -31274,6 +31276,12 @@ PrefabInstance:
       propertyPath: TextMessageGameObject
       value: 
       objectReference: {fileID: 5063477797825550704}
+    - target: {fileID: 2694508184784795878, guid: d8faf35b7fc070542a52ad6cca65a6c5,
+        type: 3}
+      propertyPath: GameObjectParticleEffectPickupGold
+      value: 
+      objectReference: {fileID: 3923772169828570184, guid: a7c6066a7437d8948ab71a7d0c6045ab,
+        type: 3}
     - target: {fileID: 2694508184784795879, guid: d8faf35b7fc070542a52ad6cca65a6c5,
         type: 3}
       propertyPath: m_Name

@@ -2009,6 +2009,8 @@ MonoBehaviour:
   offset: {x: 0, y: 8, z: -4}
   canFollowPlayer: 0
   cameraLimitYPosition: 14
+  FirstCameraGameObject: {fileID: 0}
+  SecondCameraGameObject: {fileID: 0}
 --- !u!1 &969232605 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8735575736507938271, guid: 2491a1183daf60d498a98d72e10c27a6,
@@ -4504,6 +4506,12 @@ PrefabInstance:
       propertyPath: TextMessageGameObject
       value: 
       objectReference: {fileID: 531234526}
+    - target: {fileID: 2694508184784795878, guid: d8faf35b7fc070542a52ad6cca65a6c5,
+        type: 3}
+      propertyPath: GameObjectParticleEffectPickupGold
+      value: 
+      objectReference: {fileID: 3923772169828570184, guid: a7c6066a7437d8948ab71a7d0c6045ab,
+        type: 3}
     - target: {fileID: 2694508184784795879, guid: d8faf35b7fc070542a52ad6cca65a6c5,
         type: 3}
       propertyPath: m_Name

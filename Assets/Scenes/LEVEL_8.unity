@@ -11844,6 +11844,12 @@ PrefabInstance:
       propertyPath: TextMessageGameObject
       value: 
       objectReference: {fileID: 2142439939}
+    - target: {fileID: 2694508184784795878, guid: d8faf35b7fc070542a52ad6cca65a6c5,
+        type: 3}
+      propertyPath: GameObjectParticleEffectPickupGold
+      value: 
+      objectReference: {fileID: 3923772169828570184, guid: a7c6066a7437d8948ab71a7d0c6045ab,
+        type: 3}
     - target: {fileID: 2694508184784795879, guid: d8faf35b7fc070542a52ad6cca65a6c5,
         type: 3}
       propertyPath: m_Name

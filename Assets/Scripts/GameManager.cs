@@ -58,15 +58,25 @@ public class GameManager : MonoBehaviour
     public GameObject TextMessageGameObject;
     public Texture[] TextureMessage; // 0 - Collect Gold | 1 - Level complete | 2 - You need A Key | 
 
-    public void PickItem(ItemToPick item)
+    [Header("Particle Effects")]
+    public GameObject GameObjectParticleEffectPickupGold;
+
+    public void PickItem(ItemToPick nameOfItem, GameObject itemGameObject)
     {
-        switch (item)
+        GameObject tempParticleEffect;
+        switch (nameOfItem)
         {
             case ItemToPick.Gold:
+                tempParticleEffect = GameObject.Instantiate(GameObjectParticleEffectPickupGold, itemGameObject.transform.position, Quaternion.identity);
+                tempParticleEffect.GetComponent<ParticleSystem>().Play();
+                Destroy(tempParticleEffect, 2f);
                 goldToCollect--;
                 textGold.text = "" + goldToCollect;
                 break;
             case ItemToPick.Key:
+                tempParticleEffect = GameObject.Instantiate(GameObjectParticleEffectPickupGold, itemGameObject.transform.position, Quaternion.identity);
+                tempParticleEffect.GetComponent<ParticleSystem>().Play();
+                Destroy(tempParticleEffect, 2f);
                 keyToCollect++;
                 break;
         }

@@ -27,18 +27,20 @@ public class Camera : GameManagerInitialazor
     IEnumerator CameraToMap()
     {
 
-        yield return new WaitForSeconds(2f);
-        do
-        {
-            transform.position = new Vector3(0, transform.position.y - 0.2f, -10f);
-            yield return new WaitForSeconds(0.01f);
+        //yield return new WaitForSeconds(2f);
+        //do
+        //{
+        //    transform.position = new Vector3(0, transform.position.y - 0.2f, -10f);
+        //    yield return new WaitForSeconds(0.01f);
 
-        } while (transform.position.y >= cameraLimitYPosition);
+        //} while (transform.position.y >= cameraLimitYPosition);
 
-        yield return new WaitForSeconds(2f);
-        StartCoroutine(gameManager.ShowTransitionEffect());
+        //yield return new WaitForSeconds(2f);
+        //StartCoroutine(gameManager.ShowTransitionEffect());
 
+        yield return new WaitForSeconds(0.01f);
         canFollowPlayer = true;
+
         player.gameObject.SetActive(true);
         gameManager.isStarted = true;
         gameManager.ShowUI();
@@ -61,7 +63,7 @@ public class Camera : GameManagerInitialazor
     {
         if (FirstCameraGameObject.activeSelf)
         {
-            Time.timeScale = 0;
+            
             FirstCameraGameObject.SetActive(false);
             SecondCameraGameObject.SetActive(true);
         }
