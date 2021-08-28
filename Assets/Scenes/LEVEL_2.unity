@@ -6473,7 +6473,7 @@ MonoBehaviour:
   CenterPoint: {fileID: 259187439}
   offset: {x: 0, y: 8, z: -4}
   canFollowPlayer: 0
-  cameraLimitYPosition: 17
+  cameraLimitYPosition: 18
 --- !u!1 &981046155
 GameObject:
   m_ObjectHideFlags: 0
