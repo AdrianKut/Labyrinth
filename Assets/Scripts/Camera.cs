@@ -30,7 +30,7 @@ public class Camera : GameManagerInitialazor
         //yield return new WaitForSeconds(2f);
         //do
         //{
-        //    transform.position = new Vector3(0, transform.position.y - 0.2f, -10f);
+        //    transform.position = new Vector3(transform.position.x, transform.position.y - 0.2f, -10f);
         //    yield return new WaitForSeconds(0.01f);
 
         //} while (transform.position.y >= cameraLimitYPosition);

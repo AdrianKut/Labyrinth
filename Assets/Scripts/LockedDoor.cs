@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 
 public class LockedDoor : GameManagerInitialazor
@@ -17,6 +18,8 @@ public class LockedDoor : GameManagerInitialazor
             if (gameManager.keyToCollect >= 1)
             {
                 gameManager.keyToCollect = 0;
+
+                gameManager.PlaySound("wallFall");
                 StartCoroutine(HideWall());
             }
             else

@@ -130,7 +130,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-6818
+  m_Name: pb_Mesh-58636
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -294,7 +294,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-6842
+  m_Name: pb_Mesh-58660
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -827,7 +827,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20066
+  m_Name: pb_Mesh109108
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1587,7 +1587,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20108
+  m_Name: pb_Mesh73908
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1751,7 +1751,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19968
+  m_Name: pb_Mesh73768
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2008,7 +2008,7 @@ MonoBehaviour:
   CenterPoint: {fileID: 722732822}
   offset: {x: 0, y: 8, z: -4}
   canFollowPlayer: 0
-  cameraLimitYPosition: 14
+  cameraLimitYPosition: 12
   FirstCameraGameObject: {fileID: 0}
   SecondCameraGameObject: {fileID: 0}
 --- !u!1 &969232605 stripped
@@ -2428,7 +2428,7 @@ PrefabInstance:
     - target: {fileID: 5048722146883218726, guid: 41e2a74b9a8e87844a94c60d0aba8463,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 5048722146883218726, guid: 41e2a74b9a8e87844a94c60d0aba8463,
         type: 3}
@@ -2644,7 +2644,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-6872
+  m_Name: pb_Mesh-58690
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4201,7 +4201,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20040
+  m_Name: pb_Mesh73840
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4483,6 +4483,11 @@ PrefabInstance:
       objectReference: {fileID: 731863196}
     - target: {fileID: 2694508184784795878, guid: d8faf35b7fc070542a52ad6cca65a6c5,
         type: 3}
+      propertyPath: AudioPickup
+      value: 
+      objectReference: {fileID: 8300000, guid: a6d084ff9888e164c87003fa81af77e0, type: 3}
+    - target: {fileID: 2694508184784795878, guid: d8faf35b7fc070542a52ad6cca65a6c5,
+        type: 3}
       propertyPath: ButtonPause
       value: 
       objectReference: {fileID: 319768300}
@@ -4506,12 +4511,6 @@ PrefabInstance:
       propertyPath: TextMessageGameObject
       value: 
       objectReference: {fileID: 531234526}
-    - target: {fileID: 2694508184784795878, guid: d8faf35b7fc070542a52ad6cca65a6c5,
-        type: 3}
-      propertyPath: GameObjectParticleEffectPickupGold
-      value: 
-      objectReference: {fileID: 3923772169828570184, guid: a7c6066a7437d8948ab71a7d0c6045ab,
-        type: 3}
     - target: {fileID: 2694508184784795879, guid: d8faf35b7fc070542a52ad6cca65a6c5,
         type: 3}
       propertyPath: m_Name
@@ -4525,7 +4524,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19990
+  m_Name: pb_Mesh73790
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4695,7 +4694,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20122
+  m_Name: pb_Mesh73922
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

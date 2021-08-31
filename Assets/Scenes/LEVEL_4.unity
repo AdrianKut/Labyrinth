@@ -797,6 +797,11 @@ PrefabInstance:
       propertyPath: moveForward
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1550630488058501989, guid: 4e855b6b9d0026e4ba565205934eebf2,
+        type: 3}
+      propertyPath: canChangeRotate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1550630488058501990, guid: 4e855b6b9d0026e4ba565205934eebf2,
         type: 3}
       propertyPath: m_Name
@@ -940,6 +945,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1550630488058501989, guid: 4e855b6b9d0026e4ba565205934eebf2,
+        type: 3}
+      propertyPath: canChangeRotate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1550630488058501990, guid: 4e855b6b9d0026e4ba565205934eebf2,
         type: 3}
       propertyPath: m_Name
@@ -1579,6 +1589,11 @@ PrefabInstance:
       objectReference: {fileID: 2050674981}
     - target: {fileID: 2694508184784795878, guid: d8faf35b7fc070542a52ad6cca65a6c5,
         type: 3}
+      propertyPath: AudioPickup
+      value: 
+      objectReference: {fileID: 8300000, guid: a6d084ff9888e164c87003fa81af77e0, type: 3}
+    - target: {fileID: 2694508184784795878, guid: d8faf35b7fc070542a52ad6cca65a6c5,
+        type: 3}
       propertyPath: ButtonPause
       value: 
       objectReference: {fileID: 2050674977}
@@ -1597,6 +1612,11 @@ PrefabInstance:
       propertyPath: TransitionPanel
       value: 
       objectReference: {fileID: 2012282072}
+    - target: {fileID: 2694508184784795878, guid: d8faf35b7fc070542a52ad6cca65a6c5,
+        type: 3}
+      propertyPath: AudioLevelComplete
+      value: 
+      objectReference: {fileID: 8300000, guid: 74fa6e176db0e3b41b69371cb566d7a8, type: 3}
     - target: {fileID: 2694508184784795878, guid: d8faf35b7fc070542a52ad6cca65a6c5,
         type: 3}
       propertyPath: TextMessageGameObject
@@ -1929,6 +1949,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1550630488058501989, guid: 4e855b6b9d0026e4ba565205934eebf2,
+        type: 3}
+      propertyPath: canChangeRotate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1550630488058501990, guid: 4e855b6b9d0026e4ba565205934eebf2,
         type: 3}
       propertyPath: m_Name

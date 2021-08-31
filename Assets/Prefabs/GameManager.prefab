@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2694508184784795873}
   - component: {fileID: 2694508184784795878}
   - component: {fileID: 2694508184092174919}
+  - component: {fileID: 1727606155}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,21 +46,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textFPS: {fileID: 0}
+  MainUI: {fileID: 0}
   TransitionPanel: {fileID: 0}
   ButtonPause: {fileID: 0}
-  isGameOver: 0
-  isPause: 0
   pauseUI: {fileID: 0}
+  LevelCompleteUI: {fileID: 0}
+  timerText: {fileID: 0}
+  isGameOver: 0
+  isPaused: 0
+  isStarted: 0
+  isFinished: 0
   player: {fileID: 6221922016801618876, guid: 4ad8d5dc7b73f464297dae34222c1fb1, type: 3}
   startPosition: {fileID: 0}
   goldToCollect: 0
   textGold: {fileID: 0}
   keyToCollect: 0
+  TextMessageGameObject: {fileID: 0}
   TextureMessage:
   - {fileID: 2800000, guid: e3166a09aa2dca140b5639cb336bb857, type: 3}
   - {fileID: 2800000, guid: 647518b7dc87a7340bfdc6f25853afe1, type: 3}
   - {fileID: 2800000, guid: ddcec916fd1b5514499e1d9fd998a1d6, type: 3}
-  TextMessageGameObject: {fileID: 0}
+  GameObjectParticleEffectPickupGold: {fileID: 3923772169828570184, guid: a7c6066a7437d8948ab71a7d0c6045ab,
+    type: 3}
+  AudioLevelComplete: {fileID: 8300000, guid: 74fa6e176db0e3b41b69371cb566d7a8, type: 3}
+  AudioPickup: {fileID: 8300000, guid: a6d084ff9888e164c87003fa81af77e0, type: 3}
+  AudioWallFall: {fileID: 8300000, guid: 1b6104fb00a2e0a41a323dd333557652, type: 3}
+  audioClips: []
 --- !u!114 &2694508184092174919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,3 +85,99 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TextMeshProUGUITimer: {fileID: 0}
+--- !u!82 &1727606155
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2694508184784795879}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

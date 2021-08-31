@@ -1158,7 +1158,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1715370387940742004, guid: 51ff33758539fd04891ea69fbe17fd43, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 51ff33758539fd04891ea69fbe17fd43, type: 3}
 --- !u!43 &535112705
 Mesh:
@@ -1166,7 +1167,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-271616
+  m_Name: pb_Mesh-71378
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14038,6 +14039,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &775450922 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 873231176117943688, guid: 51ff33758539fd04891ea69fbe17fd43,
+    type: 3}
+  m_PrefabInstance: {fileID: 516586362}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &775450924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 775450922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4818cad9953341247a557d58a688f661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1
+  xBound: 11.4
 --- !u!1 &807737502 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8735575736507938271, guid: 2491a1183daf60d498a98d72e10c27a6,
@@ -14217,7 +14238,7 @@ MonoBehaviour:
   CenterPoint: {fileID: 259187439}
   offset: {x: 0, y: 8, z: -4}
   canFollowPlayer: 0
-  cameraLimitYPosition: 16
+  cameraLimitYPosition: 17
   FirstCameraGameObject: {fileID: 0}
   SecondCameraGameObject: {fileID: 0}
 --- !u!1 &981046155
@@ -20176,7 +20197,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh117614
+  m_Name: pb_Mesh41900
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20586,6 +20607,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7347c5d5a996a4c4cb3415bba619fc72, type: 3}
+--- !u!1 &1224641375 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 873231176117943688, guid: 51ff33758539fd04891ea69fbe17fd43,
+    type: 3}
+  m_PrefabInstance: {fileID: 1859969751}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1224641377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224641375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4818cad9953341247a557d58a688f661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1
+  xBound: 8.5
 --- !u!1 &1276989128
 GameObject:
   m_ObjectHideFlags: 0
@@ -22932,6 +22973,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 1.45
       objectReference: {fileID: 0}
+    - target: {fileID: 873231176117943687, guid: 51ff33758539fd04891ea69fbe17fd43,
+        type: 3}
+      propertyPath: axis.z
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 1715370387940742004, guid: 51ff33758539fd04891ea69fbe17fd43,
         type: 3}
       propertyPath: moveLeft
@@ -23002,7 +23048,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1715370387940742004, guid: 51ff33758539fd04891ea69fbe17fd43, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 51ff33758539fd04891ea69fbe17fd43, type: 3}
 --- !u!1 &1891913246
 GameObject:
@@ -23708,6 +23755,11 @@ PrefabInstance:
       objectReference: {fileID: 8735575736241794371}
     - target: {fileID: 2694508184784795878, guid: d8faf35b7fc070542a52ad6cca65a6c5,
         type: 3}
+      propertyPath: AudioPickup
+      value: 
+      objectReference: {fileID: 8300000, guid: a6d084ff9888e164c87003fa81af77e0, type: 3}
+    - target: {fileID: 2694508184784795878, guid: d8faf35b7fc070542a52ad6cca65a6c5,
+        type: 3}
       propertyPath: ButtonPause
       value: 
       objectReference: {fileID: 181263998}
@@ -23726,6 +23778,11 @@ PrefabInstance:
       propertyPath: TransitionPanel
       value: 
       objectReference: {fileID: 405652002}
+    - target: {fileID: 2694508184784795878, guid: d8faf35b7fc070542a52ad6cca65a6c5,
+        type: 3}
+      propertyPath: AudioLevelComplete
+      value: 
+      objectReference: {fileID: 8300000, guid: 74fa6e176db0e3b41b69371cb566d7a8, type: 3}
     - target: {fileID: 2694508184784795878, guid: d8faf35b7fc070542a52ad6cca65a6c5,
         type: 3}
       propertyPath: TextMessageGameObject
@@ -26219,7 +26276,7 @@ PrefabInstance:
     - target: {fileID: 5634393908773672505, guid: 0a26e064025d3ad47b485a058c1b13ce,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5634393908773672505, guid: 0a26e064025d3ad47b485a058c1b13ce,
         type: 3}
@@ -26300,6 +26357,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.26740837
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634393908773672511, guid: 0a26e064025d3ad47b485a058c1b13ce,
+        type: 3}
+      propertyPath: hideSpeed
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: 5634393908773672516, guid: 0a26e064025d3ad47b485a058c1b13ce,
         type: 3}

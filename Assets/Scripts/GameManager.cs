@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -61,8 +62,20 @@ public class GameManager : MonoBehaviour
     [Header("Particle Effects")]
     public GameObject GameObjectParticleEffectPickupGold;
 
+    private AudioSource MainAudioSource;
+
+    public void PlaySound(string nameOfAudioClip)
+    {
+        string path = "Audio/" + nameOfAudioClip;
+        AudioClip clip = Resources.Load(path, typeof(AudioClip)) as AudioClip;
+        MainAudioSource.PlayOneShot(clip);
+    }
+
     public void PickItem(ItemToPick nameOfItem, GameObject itemGameObject)
     {
+        if (MainManager.isAudio)
+            PlaySound("CollectGold");
+
         GameObject tempParticleEffect;
         switch (nameOfItem)
         {
@@ -100,18 +113,22 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        MainAudioSource = GetComponent<AudioSource>();
+        
+
         player.transform.position = startPosition.position;
         player = Instantiate(player, startPosition.position, Quaternion.identity);
     }
 
     void Start()
-    { 
+    {
+        if (MainManager.isAudio == false)
+            MainAudioSource.volume = 0;
+
         StartCoroutine(ShowTransitionEffect());
         HideUI();
 
         Timer.ResetTime();
-        Application.targetFrameRate = 60;
-
         InitializeTextItemsToPick();
     }
 
@@ -138,7 +155,10 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        textFPS.SetText((Mathf.Ceil(1.0f / Time.deltaTime).ToString()));
+        if (MainManager.isFPS)
+            textFPS.SetText((Mathf.Ceil(1.0f / Time.deltaTime).ToString()));
+        else
+            textFPS.gameObject.SetActive(false);
     }
 
     public void FinishLevel()
@@ -167,14 +187,8 @@ public class GameManager : MonoBehaviour
             currentSeconds = float.Parse(spliter[1]);
             currentMilliseconds = float.Parse(spliter[2]);
 
-            Debug.Log($"OLD: MIN[{old_minutes}] SEC[{old_seconds}] MS[{old_milliseconds}]");
-            Debug.Log($"NEW: MIN[{currentMinutes}] SEC[{currentSeconds}] MS[{currentMilliseconds}]");
-            
             float old_allIntoSeconds = (old_minutes * 60) + old_seconds + (old_milliseconds / 100);
             float new_TimeToSeconds = (currentMinutes * 60) + currentSeconds + (currentMilliseconds / 100);
-            
-            Debug.Log("OLD TIME: " + old_allIntoSeconds);
-            Debug.Log("NEW TIME: " + new_TimeToSeconds);
 
             if (old_minutes == 0 && old_seconds == 0 && old_milliseconds == 0)
             {
@@ -183,7 +197,6 @@ public class GameManager : MonoBehaviour
             }
             else if (new_TimeToSeconds <= old_allIntoSeconds)
             {
-                Debug.Log($"NOWY REKORD: {new_TimeToSeconds} <= {old_allIntoSeconds}");
                 MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
                 MainManager.instance.Save();
             }
@@ -213,6 +226,7 @@ public class GameManager : MonoBehaviour
             player.SetActive(false);
             ButtonPause.SetActive(false);
 
+            PlaySound("levelComplete");
             LevelCompleteUI.SetActive(true);
 
             var timer = this.gameObject.GetComponent<Timer>();
@@ -240,6 +254,7 @@ public class GameManager : MonoBehaviour
     {
         if (isPaused)
         {
+            textFPS.gameObject.SetActive(true);
             player.SetActive(true);
             pauseUI.SetActive(false);
             isPaused = false;
@@ -247,6 +262,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            textFPS.gameObject.SetActive(false);
             player.SetActive(false);
             pauseUI.SetActive(true);
             isPaused = true;
@@ -255,13 +271,18 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void Vibrate()
+    {
+        if (MainManager.isVibration)
+            Handheld.Vibrate();
+    }
+
 
     public void GameOver()
     {
-        Handheld.Vibrate();
+        PlaySound("gameOver");
+        Vibrate();
         Timer.ResetTime();
-
-        Debug.Log("Game Over | RESTART LEVEL");
 
         player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         player.transform.position = startPosition.position;
@@ -275,6 +296,9 @@ public class GameManager : MonoBehaviour
             KeyGameObjects[i].SetActive(true);
 
         InitializeTextItemsToPick();
+
+        var lockedDoor = GameObject.Find("LockedWall");
+        lockedDoor.transform.position = new Vector3(lockedDoor.transform.position.x, 0.88f, lockedDoor.transform.position.z);
     }
 
     #region LevelCompleteUI

@@ -10,9 +10,12 @@ public class MainManager : MonoBehaviour
     public int currentLevelCompleted;
     public string[] levelsTime = new string[10];
     public static bool isAudio = true;
+    public static bool isFPS = true;
+    public static bool isVibration = true;
 
     void Start()
     {
+        Application.targetFrameRate = 90;
         Load();
 
 
