@@ -20,7 +20,6 @@ public class MoveManager : MonoBehaviour
     private void Start()
     {
         rotateManager = GetComponent<RotateManager>();
-        //StartCoroutine(Move());
     }
 
     private void Update()

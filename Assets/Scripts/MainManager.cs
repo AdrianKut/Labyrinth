@@ -1,6 +1,7 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.Advertisements;
 
 public class MainManager : MonoBehaviour
 {
@@ -10,8 +11,12 @@ public class MainManager : MonoBehaviour
     public int currentLevelCompleted;
     public string[] levelsTime = new string[10];
     public static bool isAudio = true;
-    public static bool isFPS = true;
+    public static bool isFPS = false;
     public static bool isVibration = true;
+
+    public static string gameId = "4288261";
+    public static string bannerAd = "Banner_Android";
+    public static string intersititalAd = "Interstitial_Android";
 
     void Start()
     {
@@ -25,6 +30,14 @@ public class MainManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
+        Advertisement.Initialize(gameId, true);
+        Advertisement.Load(intersititalAd);
+    }
+
+    public static void ShowIntersitialAd()
+    {
+        if (Advertisement.IsReady())
+            Advertisement.Show(intersititalAd);
     }
 
     [System.Serializable]

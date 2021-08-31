@@ -9,11 +9,10 @@ public class Camera : GameManagerInitialazor
     [SerializeField] bool canFollowPlayer = false;
     [SerializeField] float cameraLimitYPosition = 17f;
 
-    private Transform player;
-
     [SerializeField] GameObject FirstCameraGameObject;
     [SerializeField] GameObject SecondCameraGameObject;
 
+    private Transform player;
     void Start()
     {
         InitializeGameManager();
@@ -27,18 +26,17 @@ public class Camera : GameManagerInitialazor
     IEnumerator CameraToMap()
     {
 
-        //yield return new WaitForSeconds(2f);
-        //do
-        //{
-        //    transform.position = new Vector3(transform.position.x, transform.position.y - 0.2f, -10f);
-        //    yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(2f);
+        do
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.2f, -10f);
+            yield return new WaitForSeconds(0.01f);
 
-        //} while (transform.position.y >= cameraLimitYPosition);
+        } while (transform.position.y >= cameraLimitYPosition);
 
-        //yield return new WaitForSeconds(2f);
-        //StartCoroutine(gameManager.ShowTransitionEffect());
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(gameManager.ShowTransitionEffect());
 
-        yield return new WaitForSeconds(0.01f);
         canFollowPlayer = true;
 
         player.gameObject.SetActive(true);

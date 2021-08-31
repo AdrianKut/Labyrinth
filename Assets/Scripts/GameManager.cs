@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -111,10 +110,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private GameObject lockedDoor;
+
     private void Awake()
     {
         MainAudioSource = GetComponent<AudioSource>();
-        
 
         player.transform.position = startPosition.position;
         player = Instantiate(player, startPosition.position, Quaternion.identity);
@@ -122,6 +122,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        lockedDoor = GameObject.Find("LockedWall");
+
         if (MainManager.isAudio == false)
             MainAudioSource.volume = 0;
 
@@ -201,27 +203,6 @@ public class GameManager : MonoBehaviour
                 MainManager.instance.Save();
             }
 
-            //else if (currentMinutes == old_minutes)
-            //{
-            //    if (currentSeconds == old_seconds)
-            //    {
-            //        if (currentMilliseconds <= old_milliseconds)
-            //        {
-            //            MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
-            //            MainManager.instance.Save();
-            //        }
-            //    }
-            //    else if (currentSeconds <= old_seconds)
-            //    {
-            //        MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
-            //        MainManager.instance.Save();
-            //    }
-            //}
-            //else if (currentMinutes <= old_minutes)
-            //{
-            //    MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
-            //    MainManager.instance.Save();
-            //}
 
             player.SetActive(false);
             ButtonPause.SetActive(false);
@@ -297,24 +278,27 @@ public class GameManager : MonoBehaviour
 
         InitializeTextItemsToPick();
 
-        var lockedDoor = GameObject.Find("LockedWall");
-        lockedDoor.transform.position = new Vector3(lockedDoor.transform.position.x, 0.88f, lockedDoor.transform.position.z);
+        if (lockedDoor != null)
+            lockedDoor.transform.position = new Vector3(lockedDoor.transform.position.x, 0.88f, lockedDoor.transform.position.z);
     }
 
     #region LevelCompleteUI
     public void BackToMenu()
     {
+        MainManager.ShowIntersitialAd();
         Time.timeScale = 1;
         StartCoroutine(LoadYourAsyncScene(0));
     }
 
     public void Restart()
     {
+        MainManager.ShowIntersitialAd();
         StartCoroutine(LoadYourAsyncScene(SceneManager.GetActiveScene().buildIndex));
     }
 
     public void NextLevel()
     {
+        MainManager.ShowIntersitialAd();
         int currentSceneNum = SceneManager.GetActiveScene().buildIndex;
         if (currentSceneNum != 10)
             StartCoroutine(LoadYourAsyncScene(currentSceneNum + 1));
