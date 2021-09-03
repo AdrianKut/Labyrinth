@@ -1030,9 +1030,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
-        m_MethodName: Changer
+      - m_Target: {fileID: 613637336}
+        m_TargetAssemblyTypeName: MainManager, Assembly-CSharp
+        m_MethodName: ShowLeaderboardsGoogleServices
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1587,9 +1587,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
-        m_MethodName: Changer
+      - m_Target: {fileID: 613637336}
+        m_TargetAssemblyTypeName: MainManager, Assembly-CSharp
+        m_MethodName: ShowAchievementsGoogleServices
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2148,6 +2148,7 @@ MonoBehaviour:
   - 00:00:00
   - 00:00:00
   - 00:00:00
+  isConnectedToGooglePlayServices: 0
 --- !u!4 &613637337
 Transform:
   m_ObjectHideFlags: 0

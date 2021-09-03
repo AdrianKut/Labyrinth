@@ -38,7 +38,7 @@ public class HoleAndRockManager : MonoBehaviour
 
         do
         {
-            Rock.transform.position = new Vector3(Rock.transform.position.x, Rock.transform.position.y - 0.1f, Rock.transform.position.z);
+            Rock.transform.position = new Vector3(Rock.transform.position.x, Rock.transform.position.y - 0.05f, Rock.transform.position.z);
             yield return new WaitForSeconds(0.01f);
 
         } while (Rock.transform.position.y >= -2);

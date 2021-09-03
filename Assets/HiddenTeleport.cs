@@ -21,6 +21,10 @@ public class HiddenTeleport : MonoBehaviour
 
     IEnumerator TeleportToPosition(GameObject player, Vector3 positionChildren, Vector3 positionParent)
     {
+        if (MainManager.instance.isConnectedToGooglePlayServices)
+            Social.ReportProgress(GPGSIds.achievement_easter_egg, 100f, null);
+
+
         GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         gameManager.PlaySound("teleport");
 

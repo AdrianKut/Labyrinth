@@ -163,6 +163,161 @@ public class GameManager : MonoBehaviour
             textFPS.gameObject.SetActive(false);
     }
 
+    static void ReportNewHighscoreToGooglePlayServices(long time, int level)
+    {
+
+        switch (level)
+        {
+            case 1:
+                Social.ReportScore((long)time, GPGSIds.leaderboard_level_1, (success) =>
+                {
+                    if (!success)
+                    {
+                        Debug.LogError("Unable to post highscore!");
+                    }
+                    else
+                    {
+                        Debug.Log("SUCCES " + level);
+                    }
+                });
+                break;
+
+            case 2:
+                Social.ReportScore((long)time, GPGSIds.leaderboard_level_2, (success) =>
+                {
+                    if (!success)
+                    {
+                        Debug.LogError("Unable to post highscore!");
+                    }
+                    else
+                    {
+                        Debug.Log("SUCCES " + level);
+                    }
+                });
+                break;
+
+            case 3:
+                Social.ReportScore((long)time, GPGSIds.leaderboard_level_3, (success) =>
+                {
+                    if (!success)
+                    {
+                        Debug.LogError("Unable to post highscore!");
+                    }
+                    else
+                    {
+                        Debug.Log("SUCCES " + level);
+                    }
+                });
+                break;
+
+            case 4:
+                Social.ReportScore((long)time, GPGSIds.leaderboard_level_4, (success) =>
+                {
+                    if (!success)
+                    {
+                        Debug.LogError("Unable to post highscore!");
+                    }
+                    else
+                    {
+                        Debug.Log("SUCCES " + level);
+                    }
+                });
+                break;
+
+            case 5:
+                Social.ReportScore((long)time, GPGSIds.leaderboard_level_5, (success) =>
+                {
+                    if (!success)
+                    {
+                        Debug.LogError("Unable to post highscore!");
+                    }
+                    else
+                    {
+                        Debug.Log("SUCCES " + level);
+                    }
+                });
+                break;
+
+            case 6:
+                Social.ReportScore((long)time, GPGSIds.leaderboard_level_6, (success) =>
+                {
+                    if (!success)
+                    {
+                        Debug.LogError("Unable to post highscore!");
+                    }
+                    else
+                    {
+                        Debug.Log("SUCCES " + level);
+                    }
+                });
+                break;
+
+            case 7:
+                Social.ReportScore((long)time, GPGSIds.leaderboard_level_7, (success) =>
+                {
+                    if (!success)
+                    {
+                        Debug.LogError("Unable to post highscore!");
+                    }
+                    else
+                    {
+                        Debug.Log("SUCCES " + level);
+                    }
+                });
+                break;
+
+
+            case 8:
+                Social.ReportScore((long)time, GPGSIds.leaderboard_level_8, (success) =>
+                {
+                    if (!success)
+                    {
+                        Debug.LogError("Unable to post highscore!");
+                    }
+                    else
+                    {
+                        Debug.Log("SUCCES " + level);
+                    }
+                });
+                break;
+
+
+            case 9:
+                Social.ReportScore((long)time, GPGSIds.leaderboard_level_9, (success) =>
+                {
+                    if (!success)
+                    {
+                        Debug.LogError("Unable to post highscore!");
+                    }
+                    else
+                    {
+                        Debug.Log("SUCCES " + level);
+                    }
+                });
+                break;
+
+
+            case 10:
+                Social.ReportScore((long)time, GPGSIds.leaderboard_level_10, (success) =>
+                {
+                    if (!success)
+                    {
+                        Debug.LogError("Unable to post highscore!");
+                    }
+                    else
+                    {
+                        Debug.Log("SUCCES " + level);
+                    }
+                });
+                break;
+
+            default:
+                break;
+        }
+
+
+    }
+
     public void FinishLevel()
     {
         if (goldToCollect == 0)
@@ -176,6 +331,26 @@ public class GameManager : MonoBehaviour
                 MainManager.instance.currentLevelCompleted = (currentLevel);
                 MainManager.instance.Save();
             }
+
+            switch (currentLevel)
+            {
+
+                case 1 when MainManager.instance.isConnectedToGooglePlayServices:
+                    Debug.Log(GPGSIds.achievement_its_only_beginning);
+                    Social.ReportProgress(GPGSIds.achievement_its_only_beginning, 100f, null);
+                    break;
+
+                case 5 when MainManager.instance.isConnectedToGooglePlayServices:
+                    Debug.Log(GPGSIds.achievement_keep_calm_and_play_next_levels);
+                    Social.ReportProgress(GPGSIds.achievement_keep_calm_and_play_next_levels, 100f, null);
+                    break;
+
+                case 10 when MainManager.instance.isConnectedToGooglePlayServices:
+                    Debug.Log(GPGSIds.achievement_youre_amazing);
+                    Social.ReportProgress(GPGSIds.achievement_youre_amazing, 100f, null);
+                    break;
+            }
+
 
             float old_minutes, old_seconds, old_milliseconds, currentMinutes, currentSeconds, currentMilliseconds;
 
@@ -196,11 +371,18 @@ public class GameManager : MonoBehaviour
             {
                 MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
                 MainManager.instance.Save();
+
+                if (MainManager.instance.isConnectedToGooglePlayServices)
+                    ReportNewHighscoreToGooglePlayServices((long)new_TimeToSeconds, currentLevel);
+
             }
             else if (new_TimeToSeconds <= old_allIntoSeconds)
             {
                 MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
                 MainManager.instance.Save();
+
+                if (MainManager.instance.isConnectedToGooglePlayServices)
+                    ReportNewHighscoreToGooglePlayServices((long)new_TimeToSeconds, currentLevel);
             }
 
 
@@ -261,6 +443,13 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        if (MainManager.instance.isConnectedToGooglePlayServices)
+        {
+            Debug.Log(GPGSIds.achievement_ole_this_is_hole);
+            Social.ReportProgress(GPGSIds.achievement_ole_this_is_hole, 100f, null);
+        }
+
+
         PlaySound("gameOver");
         Vibrate();
         Timer.ResetTime();

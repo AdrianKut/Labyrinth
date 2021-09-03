@@ -1,3 +1,5 @@
+using GooglePlayGames;
+using GooglePlayGames.BasicApi;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
@@ -20,6 +22,7 @@ public class MainManager : MonoBehaviour
 
     void Start()
     {
+        SignInToGooglePlayServices();
         Application.targetFrameRate = 90;
         Load();
 
@@ -33,6 +36,32 @@ public class MainManager : MonoBehaviour
         Advertisement.Initialize(gameId, true);
         Advertisement.Load(intersititalAd);
     }
+
+    public bool isConnectedToGooglePlayServices;
+    public void SignInToGooglePlayServices()
+    {
+        PlayGamesPlatform.Instance.Authenticate(SignInInteractivity.CanPromptAlways, (result) =>
+        {
+            if (result == SignInStatus.Success)
+                isConnectedToGooglePlayServices = true;
+            else
+                isConnectedToGooglePlayServices = false;
+        });
+    }
+
+
+    public void ShowAchievementsGoogleServices()
+    {
+        if (isConnectedToGooglePlayServices)
+            Social.ShowAchievementsUI();
+    }
+
+    public void ShowLeaderboardsGoogleServices()
+    {
+        if (isConnectedToGooglePlayServices)
+            Social.ShowLeaderboardUI();
+    }
+
 
     public static void ShowIntersitialAd()
     {
