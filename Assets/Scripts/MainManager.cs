@@ -20,8 +20,14 @@ public class MainManager : MonoBehaviour
     public static string bannerAd = "Banner_Android";
     public static string intersititalAd = "Interstitial_Android";
 
-    void Start()
+    private void Awake()
     {
+        PlayGamesPlatform.DebugLogEnabled = true;
+        PlayGamesPlatform.Activate();
+    }
+
+    void Start()
+    {    
         SignInToGooglePlayServices();
         Application.targetFrameRate = 90;
         Load();
@@ -33,14 +39,14 @@ public class MainManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
-        Advertisement.Initialize(gameId, true);
+        Advertisement.Initialize(gameId);
         Advertisement.Load(intersititalAd);
     }
 
     public bool isConnectedToGooglePlayServices;
     public void SignInToGooglePlayServices()
     {
-        PlayGamesPlatform.Instance.Authenticate(SignInInteractivity.CanPromptAlways, (result) =>
+        PlayGamesPlatform.Instance.Authenticate(SignInInteractivity.CanPromptOnce, (result) =>
         {
             if (result == SignInStatus.Success)
                 isConnectedToGooglePlayServices = true;
@@ -49,17 +55,25 @@ public class MainManager : MonoBehaviour
         });
     }
 
+    private void ShowAndroidToastMessage(string message)
+    {
+        SSTools.ShowMessage(message, SSTools.Position.bottom, SSTools.Time.oneSecond);
+    }
 
     public void ShowAchievementsGoogleServices()
     {
         if (isConnectedToGooglePlayServices)
             Social.ShowAchievementsUI();
+        else
+            ShowAndroidToastMessage("Couldn't load google services!");
     }
 
     public void ShowLeaderboardsGoogleServices()
     {
         if (isConnectedToGooglePlayServices)
             Social.ShowLeaderboardUI();
+        else
+            ShowAndroidToastMessage("Couldn't load google services!");
     }
 
 
@@ -67,6 +81,11 @@ public class MainManager : MonoBehaviour
     {
         if (Advertisement.IsReady())
             Advertisement.Show(intersititalAd);
+    }
+
+    public void ShowFacebookURL()
+    {
+        Application.OpenURL("https://www.facebook.com/96GAMES");
     }
 
     [System.Serializable]

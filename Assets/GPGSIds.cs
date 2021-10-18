@@ -24,21 +24,21 @@
 
 public static class GPGSIds
 {
-        public const string leaderboard_level_3 = "CgkI4fGcnusBEAIQAg"; // <GPGSID>
-        public const string leaderboard_level_2 = "CgkI4fGcnusBEAIQAQ"; // <GPGSID>
-        public const string leaderboard_level_1 = "CgkI4fGcnusBEAIQAA"; // <GPGSID>
-        public const string achievement_its_only_beginning = "CgkI4fGcnusBEAIQDQ"; // <GPGSID>
-        public const string leaderboard_level_7 = "CgkI4fGcnusBEAIQBg"; // <GPGSID>
-        public const string leaderboard_level_6 = "CgkI4fGcnusBEAIQBQ"; // <GPGSID>
-        public const string leaderboard_level_5 = "CgkI4fGcnusBEAIQBA"; // <GPGSID>
-        public const string leaderboard_level_4 = "CgkI4fGcnusBEAIQAw"; // <GPGSID>
-        public const string achievement_easter_egg = "CgkI4fGcnusBEAIQDg"; // <GPGSID>
-        public const string achievement_keep_calm_and_play_next_levels = "CgkI4fGcnusBEAIQDA"; // <GPGSID>
-        public const string leaderboard_level_8 = "CgkI4fGcnusBEAIQBw"; // <GPGSID>
-        public const string leaderboard_level_10 = "CgkI4fGcnusBEAIQCQ"; // <GPGSID>
-        public const string leaderboard_level_9 = "CgkI4fGcnusBEAIQCA"; // <GPGSID>
-        public const string achievement_youre_amazing = "CgkI4fGcnusBEAIQCw"; // <GPGSID>
-        public const string achievement_ole_this_is_hole = "CgkI4fGcnusBEAIQCg"; // <GPGSID>
+        public const string leaderboard_level_3 = "CgkIkOen0OUSEAIQCA"; // <GPGSID>
+        public const string leaderboard_level_2 = "CgkIkOen0OUSEAIQBw"; // <GPGSID>
+        public const string leaderboard_level_1 = "CgkIkOen0OUSEAIQBg"; // <GPGSID>
+        public const string leaderboard_level_7 = "CgkIkOen0OUSEAIQDA"; // <GPGSID>
+        public const string leaderboard_level_6 = "CgkIkOen0OUSEAIQCw"; // <GPGSID>
+        public const string leaderboard_level_5 = "CgkIkOen0OUSEAIQCg"; // <GPGSID>
+        public const string leaderboard_level_4 = "CgkIkOen0OUSEAIQCQ"; // <GPGSID>
+        public const string achievement_easter_egg = "CgkIkOen0OUSEAIQAQ"; // <GPGSID>
+        public const string achievement_keep_calm_and_play_next_levels = "CgkIkOen0OUSEAIQBA"; // <GPGSID>
+        public const string leaderboard_level_8 = "CgkIkOen0OUSEAIQDQ"; // <GPGSID>
+        public const string achievement_its_only_beginning = "CgkIkOen0OUSEAIQAw"; // <GPGSID>
+        public const string leaderboard_level_10 = "CgkIkOen0OUSEAIQDw"; // <GPGSID>
+        public const string leaderboard_level_9 = "CgkIkOen0OUSEAIQDg"; // <GPGSID>
+        public const string achievement_youre_amazing = "CgkIkOen0OUSEAIQBQ"; // <GPGSID>
+        public const string achievement_ole_this_is_hole = "CgkIkOen0OUSEAIQAg"; // <GPGSID>
 
 }
 

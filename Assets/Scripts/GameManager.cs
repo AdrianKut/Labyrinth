@@ -318,13 +318,20 @@ public class GameManager : MonoBehaviour
 
     }
 
+    private static void GetSpliterCurrentLevel(out string[] spliter, out int currentLevel)
+    {
+        spliter = SceneManager.GetActiveScene().name.Split('_');
+        currentLevel = int.Parse(spliter[1]);
+    }
+
     public void FinishLevel()
     {
         if (goldToCollect == 0)
         {
             isFinished = true;
-            string[] spliter = SceneManager.GetActiveScene().name.Split('_');
-            int currentLevel = int.Parse(spliter[1]);
+            string[] spliter;
+            int currentLevel;
+            GetSpliterCurrentLevel(out spliter, out currentLevel);
 
             if (currentLevel > MainManager.instance.currentLevelCompleted && currentLevel != 10)
             {
@@ -336,17 +343,14 @@ public class GameManager : MonoBehaviour
             {
 
                 case 1 when MainManager.instance.isConnectedToGooglePlayServices:
-                    Debug.Log(GPGSIds.achievement_its_only_beginning);
                     Social.ReportProgress(GPGSIds.achievement_its_only_beginning, 100f, null);
                     break;
 
                 case 5 when MainManager.instance.isConnectedToGooglePlayServices:
-                    Debug.Log(GPGSIds.achievement_keep_calm_and_play_next_levels);
                     Social.ReportProgress(GPGSIds.achievement_keep_calm_and_play_next_levels, 100f, null);
                     break;
 
                 case 10 when MainManager.instance.isConnectedToGooglePlayServices:
-                    Debug.Log(GPGSIds.achievement_youre_amazing);
                     Social.ReportProgress(GPGSIds.achievement_youre_amazing, 100f, null);
                     break;
             }
@@ -367,22 +371,22 @@ public class GameManager : MonoBehaviour
             float old_allIntoSeconds = (old_minutes * 60) + old_seconds + (old_milliseconds / 100);
             float new_TimeToSeconds = (currentMinutes * 60) + currentSeconds + (currentMilliseconds / 100);
 
+            if (MainManager.instance.isConnectedToGooglePlayServices)
+                ReportNewHighscoreToGooglePlayServices((long)new_TimeToSeconds, currentLevel);
+            else
+                Debug.LogError("Not logged in!");
+
             if (old_minutes == 0 && old_seconds == 0 && old_milliseconds == 0)
             {
                 MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
                 MainManager.instance.Save();
 
-                if (MainManager.instance.isConnectedToGooglePlayServices)
-                    ReportNewHighscoreToGooglePlayServices((long)new_TimeToSeconds, currentLevel);
 
             }
             else if (new_TimeToSeconds <= old_allIntoSeconds)
             {
                 MainManager.instance.levelsTime[currentLevel - 1] = "" + Timer.GetTime();
                 MainManager.instance.Save();
-
-                if (MainManager.instance.isConnectedToGooglePlayServices)
-                    ReportNewHighscoreToGooglePlayServices((long)new_TimeToSeconds, currentLevel);
             }
 
 
@@ -401,6 +405,8 @@ public class GameManager : MonoBehaviour
             StartCoroutine(ShowMessageOnScreen(0));
         }
     }
+
+
 
     public IEnumerator ShowMessageOnScreen(int messageNum, bool backToMenu = false)
     {
@@ -444,11 +450,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         if (MainManager.instance.isConnectedToGooglePlayServices)
-        {
-            Debug.Log(GPGSIds.achievement_ole_this_is_hole);
             Social.ReportProgress(GPGSIds.achievement_ole_this_is_hole, 100f, null);
-        }
-
 
         PlaySound("gameOver");
         Vibrate();
@@ -474,25 +476,50 @@ public class GameManager : MonoBehaviour
     #region LevelCompleteUI
     public void BackToMenu()
     {
-        MainManager.ShowIntersitialAd();
-        Time.timeScale = 1;
-        StartCoroutine(LoadYourAsyncScene(0));
+        int currentLevel;
+        GetSpliterCurrentLevel(out _, out currentLevel);
+
+        if (currentLevel != 1 && currentLevel != 2)
+        {
+            MainManager.ShowIntersitialAd();
+            Time.timeScale = 1;
+            StartCoroutine(LoadYourAsyncScene(0));
+        }
+        else
+        {
+            Time.timeScale = 1;
+            StartCoroutine(LoadYourAsyncScene(0));
+        }
+
     }
 
     public void Restart()
     {
-        MainManager.ShowIntersitialAd();
-        StartCoroutine(LoadYourAsyncScene(SceneManager.GetActiveScene().buildIndex));
+        StartCoroutine(LoadYourAsyncScene(SceneManager.GetActiveScene().buildIndex)); ;
     }
 
     public void NextLevel()
     {
-        MainManager.ShowIntersitialAd();
-        int currentSceneNum = SceneManager.GetActiveScene().buildIndex;
-        if (currentSceneNum != 10)
-            StartCoroutine(LoadYourAsyncScene(currentSceneNum + 1));
+        int currentLevel;
+        GetSpliterCurrentLevel(out _, out currentLevel);
+
+        if (currentLevel != 1 && currentLevel != 2)
+        {
+            MainManager.ShowIntersitialAd();
+            int currentSceneNum = SceneManager.GetActiveScene().buildIndex;
+            if (currentSceneNum != 10)
+                StartCoroutine(LoadYourAsyncScene(currentSceneNum + 1));
+            else
+                StartCoroutine(LoadYourAsyncScene(1));
+        }
         else
-            StartCoroutine(LoadYourAsyncScene(1));
+        {
+            int currentSceneNum = SceneManager.GetActiveScene().buildIndex;
+            if (currentSceneNum != 10)
+                StartCoroutine(LoadYourAsyncScene(currentSceneNum + 1));
+            else
+                StartCoroutine(LoadYourAsyncScene(1));
+        }
     }
 
     IEnumerator LoadYourAsyncScene(int numSceneToLoad)
