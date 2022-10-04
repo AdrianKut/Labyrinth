@@ -17,7 +17,6 @@ public class PopUpEffect : MonoBehaviour
 
     private void PopUp()
     {
-
         transfom = this.gameObject.GetComponent<RectTransform>();
         transfom.localScale = new Vector3(0, 0, 0);
         this.gameObject.LeanScale(new Vector3(1, 1, 1), 1f).setEaseOutQuart();
