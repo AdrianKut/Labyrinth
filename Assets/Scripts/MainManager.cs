@@ -79,7 +79,6 @@ public class MainManager : MonoBehaviour
 
     public static void ShowIntersitialAd()
     {
-        if (Advertisement.IsReady())
             Advertisement.Show(intersititalAd);
     }
 

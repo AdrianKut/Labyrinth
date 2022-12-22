@@ -25,7 +25,6 @@ public abstract class GameManagerInitialazor : MonoBehaviour
 
 public class GameManager : MonoBehaviour
 {
-    //TO DELETE BEFORE RELEASE
     public TextMeshProUGUI textFPS;
 
     public GameObject MainUI;
@@ -456,6 +455,8 @@ public class GameManager : MonoBehaviour
         Vibrate();
         Timer.ResetTime();
 
+        MainManager.ShowIntersitialAd();
+
         player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         player.transform.position = startPosition.position;
         player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
@@ -479,17 +480,8 @@ public class GameManager : MonoBehaviour
         int currentLevel;
         GetSpliterCurrentLevel(out _, out currentLevel);
 
-        if (currentLevel != 1 && currentLevel != 2)
-        {
-            MainManager.ShowIntersitialAd();
-            Time.timeScale = 1;
-            StartCoroutine(LoadYourAsyncScene(0));
-        }
-        else
-        {
-            Time.timeScale = 1;
-            StartCoroutine(LoadYourAsyncScene(0));
-        }
+        Time.timeScale = 1;
+        StartCoroutine(LoadYourAsyncScene(0));
 
     }
 
