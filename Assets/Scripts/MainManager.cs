@@ -1,5 +1,3 @@
-using GooglePlayGames;
-using GooglePlayGames.BasicApi;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
@@ -22,8 +20,8 @@ public class MainManager : MonoBehaviour
 
     private void Awake()
     {
-        PlayGamesPlatform.DebugLogEnabled = true;
-        PlayGamesPlatform.Activate();
+        //PlayGamesPlatform.DebugLogEnabled = true;
+        //PlayGamesPlatform.Activate();
     }
 
     void Start()
@@ -46,13 +44,13 @@ public class MainManager : MonoBehaviour
     public bool isConnectedToGooglePlayServices;
     public void SignInToGooglePlayServices()
     {
-        PlayGamesPlatform.Instance.Authenticate(SignInInteractivity.CanPromptOnce, (result) =>
-        {
-            if (result == SignInStatus.Success)
-                isConnectedToGooglePlayServices = true;
-            else
-                isConnectedToGooglePlayServices = false;
-        });
+        //PlayGamesPlatform.Instance.Authenticate(SignInInteractivity.CanPromptOnce, (result) =>
+        //{
+        //    if (result == SignInStatus.Success)
+        //        isConnectedToGooglePlayServices = true;
+        //    else
+        //        isConnectedToGooglePlayServices = false;
+        //});
     }
 
     private void ShowAndroidToastMessage(string message)
