@@ -455,7 +455,7 @@ public class GameManager : MonoBehaviour
         Vibrate();
         Timer.ResetTime();
 
-        MainManager.ShowIntersitialAd();
+        MainManager.instance.ShowIntersitialAd();
 
         player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         player.transform.position = startPosition.position;
@@ -497,7 +497,7 @@ public class GameManager : MonoBehaviour
 
         if (currentLevel != 1 && currentLevel != 2)
         {
-            MainManager.ShowIntersitialAd();
+            MainManager.instance.ShowIntersitialAd();
             int currentSceneNum = SceneManager.GetActiveScene().buildIndex;
             if (currentSceneNum != 10)
                 StartCoroutine(LoadYourAsyncScene(currentSceneNum + 1));
