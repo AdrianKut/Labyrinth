@@ -18,7 +18,7 @@ public class MainManager : MonoBehaviour, IUnityAdsShowListener, IUnityAdsLoadLi
 
     public static string gameId = "4288261";
     public static string bannerAd = "Banner_Android";
-    public static string intersititalAd = "Interstitial_Android";
+    public static string intersititalAd = "Interstitial_AndroidVideo";
 
     private void Awake()
     {
