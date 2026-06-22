@@ -12,6 +12,7 @@ public class MainManager : MonoBehaviour, IUnityAdsShowListener, IUnityAdsLoadLi
 
     public int currentLevelCompleted;
     public string[] levelsTime = new string[10];
+    public int skinIndex = 0;
     public static bool isAudio = true;
     public static bool isFPS = false;
     public static bool isVibration = true;
@@ -108,6 +109,7 @@ public class MainManager : MonoBehaviour, IUnityAdsShowListener, IUnityAdsLoadLi
     {
         public int currentLevelCompleted;
         public string[] levelsTime = new string[10];
+        public int skinIndex = 0;
     }
 
     public void Save()
@@ -115,6 +117,7 @@ public class MainManager : MonoBehaviour, IUnityAdsShowListener, IUnityAdsLoadLi
         SaveData data = new SaveData();
         data.currentLevelCompleted = currentLevelCompleted;
         data.levelsTime = levelsTime;
+        data.skinIndex = skinIndex;
 
         string json = JsonUtility.ToJson( data );
 
@@ -139,6 +142,7 @@ public class MainManager : MonoBehaviour, IUnityAdsShowListener, IUnityAdsLoadLi
                 SaveData data = JsonUtility.FromJson<SaveData>( json );
                 currentLevelCompleted = data.currentLevelCompleted;
                 levelsTime = data.levelsTime;
+                skinIndex = data.skinIndex;
             }
         }
     }
