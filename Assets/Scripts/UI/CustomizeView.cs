@@ -71,7 +71,6 @@ public class CustomizeView : MonoBehaviour
     private void UpdateTexture()
     {
         LeanTween.cancel( skinImage.gameObject );
-        Debug.LogError( currentSkinIndex );
         skinImage.texture = skins[currentSkinIndex];
         skinImage.transform.localScale = new Vector3( 0, 0, 0 );
         skinImage.gameObject.LeanScale( Vector3.one, 1f ).setEaseOutQuart();
